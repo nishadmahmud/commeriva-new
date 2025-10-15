@@ -38,6 +38,9 @@ importers:
       next:
         specifier: 15.4.6
         version: 15.4.6(@babel/core@7.0.0-beta.56)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next-themes:
+        specifier: ^0.4.6
+        version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       ogl:
         specifier: ^1.0.11
         version: 1.0.11
@@ -50,6 +53,9 @@ importers:
       react-bits:
         specifier: ^1.0.5
         version: 1.0.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-calendly:
+        specifier: ^4.4.0
+        version: 4.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-countup:
         specifier: ^6.5.3
         version: 6.5.3(react@19.1.0)
@@ -2604,6 +2610,12 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
+  next-themes@0.4.6:
+    resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+
   next@15.4.6:
     resolution: {integrity: sha512-us++E/Q80/8+UekzB3SAGs71AlLDsadpFMXVNM/uQ0BMwsh9m3mr0UNQIfjKed8vpWXsASe+Qifrnu1oLIcKEQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
@@ -2835,6 +2847,13 @@ packages:
     resolution: {integrity: sha512-WX4Y3tqmkCrGhLJXdogqYYpBCYtY02cjIj2TBA62vL/mWOEW33UYOZAwDKxPCY9J/K+8ghkXhtvJW1h4lq/HCg==}
     peerDependencies:
       react: '>=16.0.0'
+
+  react-calendly@4.4.0:
+    resolution: {integrity: sha512-kMd8fEby0plL5aCebhjq9aesOJ6YWcmR3Pjs3bufncykrp7b6TryaCnWGoq4xZc/oipyudAVCIRgPVUjUEr8nQ==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
 
   react-composer@5.0.3:
     resolution: {integrity: sha512-1uWd07EME6XZvMfapwZmc7NgCZqDemcvicRi3wMJzXsQLvZ3L7fTHVyPy1bZdnWXM4iPjYuNE+uJ41MLKeTtnA==}
@@ -6384,6 +6403,11 @@ snapshots:
 
   neo-async@2.6.2: {}
 
+  next-themes@0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
   next@15.4.6(@babel/core@7.0.0-beta.56)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@next/env': 15.4.6
@@ -6611,6 +6635,11 @@ snapshots:
       react-timer-mixin: 0.13.4
     transitivePeerDependencies:
       - react-dom
+
+  react-calendly@4.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   react-composer@5.0.3(react@19.1.0):
     dependencies:

@@ -6,6 +6,9 @@
 
 @import "tw-animate-css";
 
+/* dark border */
+
+
 @custom-variant dark (&:is(.dark *));
 /* 
  *{

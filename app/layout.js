@@ -11,6 +11,7 @@ import "./globals.css";
 import Component from "./Components/AvatarChat";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import { ThemeProvider } from "next-themes";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -55,17 +56,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-    
+    <html lang="en" suppressHydrationWarning>
+      
       <Component />
       <body
         className={`${geistMono.variable} ${title.variable} ${heroTitle.variable} ${logoFont.variable} ${poppins.variable} antialiased`}
       >
-        <div className="relative">
-          <Navbar />
-        </div>
-        {children}
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <div className="relative">
+            <Navbar />
+          </div>
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
