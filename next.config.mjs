@@ -14,6 +14,7 @@ const nextConfig = {
       { protocol: "https", hostname: "outletexpense.com" },
       { protocol: "https", hostname: "www.perfectgadgetbd.com" },
       { protocol: "https", hostname: "www.emusfashion.com" },
+      { protocol: "https", hostname: "taibamart.com" },
     ],
   },
 };
