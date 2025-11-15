@@ -304,6 +304,56 @@ const projects = [
     liveLink: "https://perfectgadgetbd.com/",
     technologies: ["Next.js", "Tailwind", "Framer Motion"],
   },
+  {
+    id: 16,
+    title: "Taiba Mart",
+    logo: "https://taibamart.com/_next/image?url=https%3A%2F%2Fwww.outletexpense.xyz%2Fuploads%2F243-Akhter-Hossain%2F1759820422.png&w=256&q=75",
+    image: "/Taiba Mart.png",
+    description:
+      "A multi-category retail platform offering a wide range of household essentials, personal care products, home appliances, and lifestyle goods with easy navigation, clear pricing, and convenient delivery options across Bangladesh.",
+    liveLink: "https://taibamart.com/",
+    technologies: ["Next.js", "Tailwind", "Framer Motion"],
+  },
+  {
+    id: 17,
+    title: "PixelBD",
+    logo: "https://www.gpixelbd.com/_next/image?url=https%3A%2F%2Fwww.outletexpense.xyz%2Fuploads%2F259-Shydul-Amir-Jihad%2F1761213710.png&w=96&q=75&dpl=dpl_DPrkuwpkUuyT8fShzus8ps3JWz1D",
+    image: "/PixelBD.png",
+    description:
+      "A focused mobile-tech storefront in Bangladesh offering the latest smartphones, accessories and wearable devices with full specs, competitive pricing and reliable after-sales support.",
+    liveLink: "https://www.gpixelbd.com/",
+    technologies: ["Next.js", "Tailwind", "Framer Motion"],
+  },
+  {
+    id: 18,
+    title: "MKS Outfit",
+    logo: "https://www.outletexpense.xyz/uploads/215-Rifat-Hasan/1762859683.png",
+    image: "/MKS Outfit.png",
+    description:
+      "A fashion-ecommerce destination offering curated women’s (and possibly men’s) apparel and accessories with stylish seasonal collections, easy browsing of looks, and secure online checkout for shoppers in Bangladesh",
+    liveLink: "https://www.mksoutfit.com/",
+    technologies: ["Next.js", "Tailwind", "Framer Motion"],
+  },
+  {
+    id: 19,
+    title: "EmusCreation",
+    logo: "https://www.emuscreation.com/favicon.ico",
+    image: "/EmusCreation.png",
+    description:
+      "A creative studio offering video editing, branding, brand identity, and visual storytelling.",
+    liveLink: "https://www.emuscreation.com/",
+    technologies: ["Next.js", "Tailwind", "Framer Motion"],
+  },
+  {
+    id: 20,
+    title: "Apple Dream BD",
+    logo: "https://appledreambd.com/logo.png",
+    image: "/Apple Dream BD.png",
+    description:
+      "A dedicated Apple-ecosystem retailer in Bangladesh offering the latest iPhones, iPads and accessories with full spec details, authentic products and reliable delivery plus support.",
+    liveLink: "https://appledreambd.com/",
+    technologies: ["Next.js", "Tailwind", "Framer Motion"],
+  },
 ]
 
 
@@ -388,6 +438,7 @@ export default function Portfolio() {
                   <div className="mt-auto flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
                       <Image
+                        unoptimized
                         src={project.logo}
                         alt={project.title}
                         width={40}

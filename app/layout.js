@@ -57,11 +57,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      
-      <Component />
       <body
         className={`${geistMono.variable} ${title.variable} ${heroTitle.variable} ${logoFont.variable} ${poppins.variable} antialiased`}
       >
+        <Component />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <div className="relative">
             <Navbar />
