@@ -354,6 +354,16 @@ const projects = [
     liveLink: "https://appledreambd.com/",
     technologies: ["Next.js", "Tailwind", "Framer Motion"],
   },
+  {
+    id: 21,
+    title: "Apple Nation BD",
+    logo: "https://www.applenationbd.com/logo.png",
+    image: "/Apple Nation BD.png",
+    description:
+      "A premier destination for Apple products in Bangladesh, featuring a wide range of iPhones, MacBooks, and accessories with competitive pricing and excellent customer service.",
+    liveLink: "https://applenationbd.com/",
+    technologies: ["Next.js", "Tailwind", "Framer Motion"],
+  },
 ]
 
 
@@ -372,9 +382,9 @@ export default function Portfolio() {
       <div className="pointer-events-none absolute inset-0 z-0 hidden dark:block" style={{ background: `radial-gradient(700px circle at var(--x) var(--y), rgba(255,255,255,0.06), transparent 75%)` }} />
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 dark:from-blue-950/20 dark:via-transparent dark:to-purple-950/20"></div>
-      
+
       {/* Header */}
-      <motion.div 
+      <motion.div
         variants={titleVariants}
         initial="hidden"
         whileInView="visible"
@@ -386,7 +396,7 @@ export default function Portfolio() {
       </motion.div>
 
       {/* Projects Grid */}
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -412,7 +422,7 @@ export default function Portfolio() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
+
                   {/* Technology badges */}
                   <div className="absolute top-3 left-3 flex flex-wrap gap-1">
                     {project.technologies.slice(0, 2).map((tech, i) => (

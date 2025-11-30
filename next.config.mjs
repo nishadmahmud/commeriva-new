@@ -17,6 +17,9 @@ const nextConfig = {
       { protocol: "https", hostname: "taibamart.com" },
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

@@ -44,3 +44,7 @@ next-env.d.ts
 
 # local planning docs
 DEV_PLAN.md
+
+# generated seo files
+public/sitemap*.xml
+public/robots.txt
