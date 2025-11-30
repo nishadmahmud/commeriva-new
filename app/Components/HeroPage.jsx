@@ -87,11 +87,11 @@ const HeroPage = () => {
               <div className="relative p-[2px] rounded-2xl bg-gray-200 dark:bg-[conic-gradient(from_180deg_at_50%_50%,_rgba(255,255,255,0.35),_rgba(168,85,247,0.35),_rgba(34,211,238,0.35),_rgba(255,255,255,0.35))]">
                 <div className="relative rounded-2xl bg-white/70 dark:bg-neutral-950/80 backdrop-blur-xl border border-white/10 overflow-hidden">
                   <div className="relative aspect-[4/3] lg:aspect-[5/4]">
-                    <img 
-                      src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&auto=format&fit=crop&q=80" 
-                      alt="SaaS dashboard interface" 
-                      className="w-full h-full object-cover" 
-                      draggable={false} 
+                    <img
+                      src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&auto=format&fit=crop&q=80"
+                      alt="SaaS dashboard interface"
+                      className="w-full h-full object-cover"
+                      draggable={false}
                     />
                   </div>
 
