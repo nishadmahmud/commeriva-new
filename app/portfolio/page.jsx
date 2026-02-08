@@ -364,6 +364,16 @@ const projects = [
     liveLink: "https://applenationbd.com/",
     technologies: ["Next.js", "Tailwind", "Framer Motion"],
   },
+  {
+    id: 22,
+    title: "Brand Empire",
+    logo: "https://www.brandempirebd.com/logo.png?dpl=dpl_H97nuooTcSkzyC8vR8MR9e4Kk3gv",
+    image: "/Brand Empire.png",
+    description:
+      "A premium clothing brand for men and women in Bangladesh, featuring a wide range of clothing, accessories, and other products with competitive pricing and excellent customer service.",
+    liveLink: "https://www.brandempirebd.com/",
+    technologies: ["Next.js", "Tailwind", "Framer Motion"],
+  },
 ]
 
 
