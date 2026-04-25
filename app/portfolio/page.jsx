@@ -8,6 +8,42 @@ import { Eye, ExternalLink, ArrowRight } from "lucide-react";
 
 const projects = [
   {
+    id: 101,
+    title: "Dizmo",
+    logo: "https://www.dizmo.com.bd/favicon.ico",
+    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Dizmo",
+    description: "Shop the latest smartphones, laptops, tablets & gadgets with authentic warranty at Dizmo Bangladesh.",
+    liveLink: "https://www.dizmo.com.bd/",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 102,
+    title: "Sports Shop",
+    logo: "https://www.google.com/s2/favicons?domain=sportsshop.com.bd&sz=128",
+    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Sports+Shop",
+    description: "Shop premium sports equipment, fitness gear, and athletic wear in Bangladesh.",
+    liveLink: "https://www.sportsshop.com.bd/",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 103,
+    title: "Allion",
+    logo: "https://www.google.com/s2/favicons?domain=allion-appliance.com&sz=128",
+    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Allion",
+    description: "Premium kitchen appliances and home essentials.",
+    liveLink: "https://www.allion-appliance.com/",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 104,
+    title: "HN Dental Supply",
+    logo: "https://www.google.com/s2/favicons?domain=hndentalbd.com&sz=128",
+    image: "https://placehold.co/800x600/f8fafc/1e293b?text=HN+Dental+Supply",
+    description: "Your premier destination for authentic dental instruments and tech accessories.",
+    liveLink: "https://hndentalbd.com/",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
     id: 1,
     title: "Gadget Bodda",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757832351.jpg",
