@@ -3,14 +3,19 @@ import React from "react";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12 poppins text-gray-900 dark:text-gray-100">
+    <div className="max-w-4xl mx-auto px-6 py-16 poppins text-gray-900">
       {/* Header */}
-      <h1 className="text-3xl md:text-4xl font-semibold mb-2">Privacy Policy</h1>
-      <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">Last updated: 6 Jul, 2025</p>
+      <div className="text-center mb-10">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-gray-600 text-xs font-semibold mb-4">
+          Legal
+        </span>
+        <h1 className="text-3xl md:text-4xl font-bold heroTitle mb-2">Privacy Policy</h1>
+        <p className="text-sm text-gray-500">Last updated: 6 Jul, 2025</p>
+      </div>
 
       <div className="space-y-6 leading-relaxed">
         {/* Intro */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">Introduction</h2>
+        <h2 className="text-xl font-semibold text-gray-800">Introduction</h2>
         <p>
           Welcome to <strong>Commeriva</strong>. We provide a cloud-based
           e-commerce management platform designed to streamline online retail
@@ -36,7 +41,7 @@ const PrivacyPolicy = () => {
         <p>This document represents the initial version of our Privacy Policy.</p>
 
         {/* Data Collection */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">1. Information We Collect</h2>
+        <h2 className="text-xl font-semibold text-gray-800">1. Information We Collect</h2>
         <p>
           When you use our services, we may collect different types of personal
           and transactional information. This may include, but is not limited
@@ -67,7 +72,7 @@ const PrivacyPolicy = () => {
         </p>
 
         {/* Other Uses */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+        <h2 className="text-xl font-semibold text-gray-800">
           2. Other Uses of Your Information
         </h2>
         <p>
@@ -84,7 +89,7 @@ const PrivacyPolicy = () => {
         </p>
 
         {/* Third Parties */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">3. Third Parties and Links</h2>
+        <h2 className="text-xl font-semibold text-gray-800">3. Third Parties and Links</h2>
         <p>
           We sometimes work with external vendors, agents, or subcontractors who
           help us deliver services, process payments, analyze data, or provide
@@ -101,7 +106,7 @@ const PrivacyPolicy = () => {
         </p>
 
         {/* Cookies */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">4. Cookies</h2>
+        <h2 className="text-xl font-semibold text-gray-800">4. Cookies</h2>
         <p>
           We use cookies—small text files stored on your device—to improve your
           browsing experience, recognize returning users, and analyze site
@@ -116,7 +121,7 @@ const PrivacyPolicy = () => {
         </p>
 
         {/* Retention */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">5. Data Retention</h2>
+        <h2 className="text-xl font-semibold text-gray-800">5. Data Retention</h2>
         <p>
           We retain your personal information only for as long as necessary to
           fulfill the purposes described in this Policy, comply with legal
@@ -126,7 +131,7 @@ const PrivacyPolicy = () => {
         </p>
 
         {/* Transfers */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">6. Data Transfers</h2>
+        <h2 className="text-xl font-semibold text-gray-800">6. Data Transfers</h2>
         <p>
           Your personal information may be stored and processed outside your
           home country. By providing your information, you consent to such
@@ -135,7 +140,7 @@ const PrivacyPolicy = () => {
         </p>
 
         {/* Security */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">7. Security</h2>
+        <h2 className="text-xl font-semibold text-gray-800">7. Security</h2>
         <p>
           We use appropriate technical and organizational measures to safeguard
           your information from unauthorized access, alteration, or disclosure.
@@ -144,7 +149,7 @@ const PrivacyPolicy = () => {
         </p>
 
         {/* Rights */}
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">8. Your Rights</h2>
+        <h2 className="text-xl font-semibold text-gray-800">8. Your Rights</h2>
         <p>
           You have the right to access, correct, or request deletion of your
           personal information that we hold. You may also request that we limit

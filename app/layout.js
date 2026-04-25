@@ -1,43 +1,25 @@
 import {
-  Geist,
-  Geist_Mono,
   Poppins,
   Montserrat,
-  Saira,
 } from "next/font/google";
 import "./globals.css";
 
 import Component from "./Components/AvatarChat";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import { ThemeProvider } from "next-themes";
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "800"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const heroTitle = Montserrat({
-  variable: "--font-herotitle",
+const montserrat = Montserrat({
+  variable: "--font-heroTitle",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
-});
-
-const title = Saira({
-  variable: "--font-title",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "800"],
-  display: "swap",
-});
-
-const logoFont = { variable: "--font-logoFont" }; // Placeholder or remove if not needed
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata = {
@@ -54,6 +36,8 @@ export const metadata = {
     'Corporate Website Bangladesh',
     'E-commerce Website',
     'Web Agency Dhaka',
+    'Mobile App Development',
+    'Flutter App Development',
   ],
   openGraph: {
     title: 'Commeriva – Smart Web & Digital Solutions',
@@ -77,7 +61,7 @@ export const metadata = {
     site: '@commeriva',
     title: 'Commeriva – Smart Web & Digital Solutions',
     description:
-      'Modern, scalable websites built with performance in mind. Let’s grow your business digitally.',
+      "Modern, scalable websites built with performance in mind. Let's grow your business digitally.",
     images: ['https://www.commeriva.com/fav.png'],
   },
   alternates: {
@@ -90,18 +74,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${geistMono.variable} ${title.variable} ${heroTitle.variable} ${logoFont.variable} ${poppins.variable} antialiased`}
+        className={`${montserrat.variable} ${poppins.variable} antialiased`}
       >
         <Component />
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <div className="relative">
-            <Navbar />
-          </div>
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <div className="relative">
+          <Navbar />
+        </div>
+        {children}
+        <Footer />
       </body>
     </html>
   );

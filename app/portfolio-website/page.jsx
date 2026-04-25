@@ -1,190 +1,273 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  ChevronRight,
-  ArrowRight,
-  Check,
-  Palette,
-  Code,
-  Briefcase,
-  Camera,
-  Zap,
-  Search,
-} from "lucide-react";
 import Link from "next/link";
+import { WhatWeBring, FAQSection, CalendlyBooking } from "../Components/ServiceSections";
+import {
+  Palette,
+  ArrowRight,
+  CheckCircle,
+  Eye,
+  Sparkles,
+  Layout,
+  Image,
+  Type,
+  Layers,
+} from "lucide-react";
 
-const PortfolioLandingPage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [mouseGlow, setMouseGlow] = useState({ x: 50, y: 50 });
+const features = [
+  {
+    icon: Sparkles,
+    title: "Stunning Visual Design",
+    desc: "Minimal, elegant layouts that put your work front and center. No clutter, just impact.",
+  },
+  {
+    icon: Layout,
+    title: "Custom Grid Layouts",
+    desc: "Masonry, carousel, full-bleed — we create the perfect gallery layout for your content.",
+  },
+  {
+    icon: Eye,
+    title: "Project Showcases",
+    desc: "Detailed case study pages with before/after, process shots, and client testimonials.",
+  },
+  {
+    icon: Image,
+    title: "High-Res Media Support",
+    desc: "Optimized image and video loading. Your work loads fast and looks crisp on every screen.",
+  },
+  {
+    icon: Type,
+    title: "Brand Identity Integration",
+    desc: "Custom typography, color palette, and visual language that matches your personal brand.",
+  },
+  {
+    icon: Layers,
+    title: "Easy Content Updates",
+    desc: "Simple CMS to add new projects, update your bio, and manage your portfolio content.",
+  },
+];
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+const audiences = [
+  "Freelance designers & developers",
+  "Photographers & videographers",
+  "Architects & interior designers",
+  "Content creators & influencers",
+  "Artists & illustrators",
+  "Marketing agencies & consultants",
+  "Writers & journalists",
+  "Musicians & performers",
+];
 
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setMouseGlow({ x, y });
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut", when: "beforeChildren", staggerChildren: 0.06 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 14 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-  };
-
-  const features = [
-    { icon: <Palette className="w-6 h-6" />, title: "Modern Design", desc: "Responsive layouts for all devices" },
-    { icon: <Zap className="w-6 h-6" />, title: "Fast Loading", desc: "Optimized for smooth performance" },
-    { icon: <Search className="w-6 h-6" />, title: "SEO Friendly", desc: "Boost your visibility & ranking" },
-    { icon: <Code className="w-6 h-6" />, title: "Custom Layouts", desc: "Tailored specifically for your profession" },
-  ];
-
-  const professions = [
-    { icon: <Palette className="w-8 h-8" />, title: "Designer" },
-    { icon: <Code className="w-8 h-8" />, title: "Developer" },
-    { icon: <Camera className="w-8 h-8" />, title: "Artist" },
-    { icon: <Briefcase className="w-8 h-8" />, title: "Consultant" },
-  ];
-
-  const benefits = [
-    "Showcase your skills & achievements",
-    "Stand out with unique design",
-    "Build trust with clients & recruiters",
-    "Boost your personal brand visibility",
-    "Turn visitors into opportunities",
-  ];
-
+export default function PortfolioService() {
   return (
-    <div
-      className="relative min-h-screen bg-white dark:bg-neutral-950 text-black dark:text-gray-100 overflow-hidden"
-      onMouseMove={handleMouseMove}
-    >
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 dark:from-blue-950/20 dark:via-transparent dark:to-purple-950/20"></div>
-      
-      {/* Subtle mouse-follow neon glow */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background: `radial-gradient(650px at ${mouseGlow.x}% ${mouseGlow.y}%, rgba(59,130,246,0.10), rgba(147,51,234,0.06) 40%, transparent 70%)`,
-        }}
-      />
+    <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative py-20 text-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-          className="relative z-10 max-w-3xl mx-auto px-4"
-        >
-          <motion.h1 variants={itemVariants} className="text-4xl lg:text-5xl font-semibold mb-6 leading-tight heroTitle">
-            Showcase Your Work
-            <br /> Build Your Brand.
-            <br /> <span className="text-gray-700 dark:text-gray-200">Stand Out</span> with
-            Commeriva.
-          </motion.h1>
-          <motion.p variants={itemVariants} className="text-base poppins text-gray-600 dark:text-gray-300 mb-8">
-            Your portfolio is your digital identity — a platform to present your skills, creativity, and achievements with style.
-          </motion.p>
-        </motion.div>
-      </section>
-
-      {/* Professions */}
-      <section className="py-16 bg-white dark:bg-neutral-950">
-        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
-          <h2 className="md:text-3xl text-2xl title font-semibold mb-10 text-gray-900 dark:text-gray-100">
-            Perfect for Every Professional
-          </h2>
-          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {professions.map((p, i) => (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                whileHover={{ y: -4, scale: 1.01 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
-                className="p-6 bg-gradient-to-br from-gray-50 to-gray-100/60 dark:from-neutral-900/60 dark:to-neutral-950/70 md:bg-gray-50 md:dark:bg-neutral-900/60 rounded-xl border border-gray-300 dark:border-white/10 shadow-md md:shadow-none dark:shadow-lg dark:md:shadow-none hover:shadow-xl active:shadow-xl hover:border-blue-400/60 dark:hover:border-blue-400/40 active:border-blue-400/60 dark:active:border-blue-400/40 transition"
+      <section className="bg-gray-50 border-b border-gray-200 py-20 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-100 text-pink-600 text-xs font-semibold poppins mb-5">
+              <Palette size={14} />
+              Portfolio & Branding
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 heroTitle mb-5 leading-tight">
+              Showcase Your Talent
+              <br />
+              <span className="text-pink-600">With Style</span>
+            </h1>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto poppins mb-8">
+              Beautifully crafted portfolio websites that highlight your best
+              work, tell your story, and attract the right clients.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                href="/contact-us"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-pink-600 hover:bg-pink-700 text-white rounded-full text-sm font-semibold poppins transition-colors shadow-sm group"
               >
-                <div className="w-14 h-14 bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-gray-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  {p.icon}
-                </div>
-                <h3 className="font-semibold poppins text-gray-900 dark:text-gray-100">{p.title}</h3>
-              </motion.div>
-            ))}
+                Get Started
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-0.5 transition-transform"
+                />
+              </Link>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 px-7 py-3 border border-gray-300 text-gray-700 rounded-full text-sm font-semibold poppins transition-colors hover:bg-gray-50"
+              >
+                See Examples
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Features */}
-      <section id="features" className="py-20 bg-white dark:bg-neutral-950">
-        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
-          <h2 className="md:text-3xl text-2xl title font-semibold mb-12 text-gray-900 dark:text-gray-100">Powerful Features</h2>
-          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 heroTitle">
+              What Makes Our Portfolios Special
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map((f, i) => (
               <motion.div
                 key={i}
-                variants={itemVariants}
-                whileHover={{ y: -4, scale: 1.01 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
-                className="bg-gradient-to-br from-white to-gray-50/40 dark:from-neutral-900 dark:to-neutral-950/60 md:bg-white md:dark:bg-neutral-900 p-6 rounded-2xl border border-gray-200 dark:border-white/10 shadow-md md:shadow-none dark:shadow-lg dark:md:shadow-none hover:shadow-2xl active:shadow-2xl hover:border-blue-400/60 dark:hover:border-blue-400/40 active:border-blue-400/60 dark:active:border-blue-400/40 transition text-left"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5"
               >
-                <div className="w-12 h-12 bg-gray-800 dark:bg-white/10 text-white dark:text-gray-100 rounded-lg flex items-center justify-center mb-4">
-                  {f.icon}
+                <div className="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center mb-4">
+                  <f.icon size={20} />
                 </div>
-                <h3 className="font-semibold mb-2 poppins text-gray-900 dark:text-gray-100">{f.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm poppins">{f.desc}</p>
+                <h3 className="text-base font-bold text-gray-900 mb-1.5 poppins">
+                  {f.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed poppins">
+                  {f.desc}
+                </p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section id="benefits" className="py-20 bg-white dark:bg-neutral-950">
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="md:text-3xl text-2xl title font-semibold mb-12 text-gray-900 dark:text-gray-100">Benefits for You</h2>
-          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="space-y-4">
-            {benefits.map((b, i) => (
+      {/* Who It's For */}
+      <section className="py-16 px-6 bg-gray-50 border-t border-b border-gray-200">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 heroTitle">
+              Built For Creatives
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-3">
+            {audiences.map((item, i) => (
               <motion.div
                 key={i}
-                variants={itemVariants}
-                className="flex items-center bg-gray-50 dark:bg-neutral-900/60 p-4 rounded-xl poppins text-left border border-gray-200 dark:border-white/10"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.04 }}
+                className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100"
               >
-                <Check className="w-5 h-5 text-green-600 dark:text-emerald-400 mr-3 flex-shrink-0" />
-                <p className="text-gray-800 dark:text-gray-200">{b}</p>
+                <CheckCircle size={16} className="text-pink-500 shrink-0" />
+                <span className="text-sm text-gray-700 poppins">{item}</span>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
+      <WhatWeBring
+        title="Here's What We Bring to the Table"
+        subtitle="We craft portfolios that don't just showcase work — they win clients."
+        tabs={[
+          {
+            label: "Visual Design",
+            image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80",
+            description: "We create stunning visual designs that put your work front and center. Clean, modern layouts that let your creativity speak.",
+            points: [
+              "<strong>Custom layouts</strong> – Masonry, carousel, full-bleed — the perfect grid for your content.",
+              "<strong>Animation & interaction</strong> – Smooth hover effects, parallax, and micro-animations.",
+              "<strong>Mobile-first</strong> – Beautiful on every screen size and device.",
+            ]
+          },
+          {
+            label: "Project Showcases",
+            image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600&q=80",
+            description: "Detailed case study pages that tell the story behind your work — process, challenges, and results.",
+            points: [
+              "<strong>Case study templates</strong> – Structured pages with before/after, process shots, and outcomes.",
+              "<strong>Client testimonials</strong> – Integrated reviews and feedback from your clients.",
+              "<strong>Category filtering</strong> – Let visitors browse by project type or industry.",
+            ]
+          },
+          {
+            label: "Personal Branding",
+            image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80",
+            description: "Your portfolio is your personal brand. We build a cohesive identity that represents who you are and what you stand for.",
+            points: [
+              "<strong>Custom typography</strong> – Font pairings that match your creative style.",
+              "<strong>Color palette</strong> – A curated palette that reflects your personality.",
+              "<strong>About page</strong> – A compelling personal story that connects with visitors.",
+            ]
+          },
+          {
+            label: "Content Management",
+            image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80",
+            description: "Add new projects, update your bio, and manage media — all from an easy-to-use dashboard.",
+            points: [
+              "<strong>Simple CMS</strong> – No coding required to update your portfolio.",
+              "<strong>Media optimization</strong> – Automatic image compression and lazy loading.",
+              "<strong>Blog module</strong> – Optional blog to share your insights and build authority.",
+            ]
+          },
+        ]}
+      />
+
+      {/* Calendly */}
+      <CalendlyBooking />
+
+      {/* FAQ */}
+      <FAQSection
+        serviceLabel="Portfolio & Personal Branding"
+        faqs={[
+          { q: "What makes a portfolio website different from a regular website?", a: "A portfolio site is designed specifically to showcase your work visually. It features gallery layouts, case study pages, and a focus on your creative process — not just listing services." },
+          { q: "Can I update my portfolio easily?", a: "Yes. We include a simple CMS that lets you add new projects, update images, and edit your bio without touching code." },
+          { q: "Do you design the visual identity too?", a: "We can. If you have brand guidelines, we follow them. If not, we create a cohesive visual identity with custom typography, color palette, and layout." },
+          { q: "How many projects can I showcase?", a: "Unlimited. The architecture is built to grow with your work. Add as many projects, categories, and media as you need." },
+          { q: "Will it load fast with high-resolution images?", a: "Absolutely. We use optimized image formats, lazy loading, CDN delivery, and Next.js image optimization to ensure fast loads even with large media files." },
+          { q: "How long does it take to build?", a: "Most portfolio websites are completed in 2–3 weeks. Complex sites with case studies and blog modules may take 3–4 weeks." },
+        ]}
+      />
+
       {/* CTA */}
-      <section className="py-20  bg-white dark:bg-neutral-950 text-center text-white ">
-        <div className="mx-auto px-4 relative text-gray-900 dark:text-gray-100">
-          <h2 className="md:text-3xl text-2xl heroTitle font-semibold mb-4">
-            Ready to Build Your Digital Identity?
+      <section className="py-20 px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 heroTitle mb-3">
+            Ready to Stand Out?
           </h2>
-          <p className="dark:text-gray-300 text-gray-900 mb-8 poppins">
-            Your portfolio becomes more than a website - it becomes your personal growth engine.
+          <p className="text-gray-500 poppins mb-6">
+            Let Commeriva build a portfolio that speaks louder than your resume.
           </p>
-          <Link href='https://docs.google.com/forms/d/e/1FAIpQLSebEE9Lz4XluDQ9oLs6dS6CH1NNEBQcEmVQ4ncpg9i3uyuy1w/viewform' target="_blank" className="inline-flex items-center border border-black dark:border-white gap-2 bg-white text-black dark:bg-white/90 dark:text-black px-6 py-2 rounded-full font-semibold poppins hover:bg-gray-100 transition">
-            Get Started Today <ChevronRight className="w-5 h-5" />
+          <Link
+            href="/pricing?category=Portfolio"
+            className="inline-flex items-center gap-2 px-7 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-full text-sm font-semibold poppins transition-colors shadow-sm group"
+          >
+            View Portfolio Pricing
+            <ArrowRight
+              size={16}
+              className="group-hover:translate-x-0.5 transition-transform"
+            />
           </Link>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
-};
-
-export default PortfolioLandingPage;
+}

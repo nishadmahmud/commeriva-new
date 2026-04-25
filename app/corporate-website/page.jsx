@@ -1,196 +1,287 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { WhatWeBring, FAQSection, CalendlyBooking } from "../Components/ServiceSections";
+import {
+  Briefcase,
+  ArrowRight,
+  CheckCircle,
+  Globe,
+  Shield,
+  Zap,
+  BarChart3,
+  Users,
+  Smartphone,
+  Search,
+} from "lucide-react";
+
+const features = [
+  {
+    icon: Globe,
+    title: "Professional Design",
+    desc: "Clean, modern layouts that reflect your brand's authority and build instant trust with visitors.",
+  },
+  {
+    icon: Zap,
+    title: "Lightning Fast",
+    desc: "Next.js-powered performance with sub-second load times and perfect Core Web Vitals.",
+  },
+  {
+    icon: Search,
+    title: "SEO Optimized",
+    desc: "Pre-rendered pages, schema markup, sitemap generation, and metadata management built in.",
+  },
+  {
+    icon: Smartphone,
+    title: "Fully Responsive",
+    desc: "Pixel-perfect on desktop, tablet, and mobile. Every breakpoint is carefully crafted.",
+  },
+  {
+    icon: Shield,
+    title: "Secure & Reliable",
+    desc: "Enterprise-grade security with SSL, DDoS protection, and secure hosting infrastructure.",
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics Integration",
+    desc: "Google Analytics, Tag Manager, and custom tracking to measure every visitor interaction.",
+  },
+  {
+    icon: Users,
+    title: "Lead Generation",
+    desc: "Contact forms, CTAs, and landing pages optimized to convert visitors into clients.",
+  },
+  {
+    icon: Briefcase,
+    title: "Content Management",
+    desc: "Easy-to-use CMS so your team can update pages, blog posts, and media without developers.",
+  },
+];
 
 export default function CorporatePage() {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.98 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.7, delay: i * 0.06, ease: [0.25, 0.46, 0.45, 0.94] },
-    }),
-    hover: { y: -6, scale: 1.01, transition: { duration: 0.25 } },
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
-  const [mouseGlow, setMouseGlow] = useState({ x: 50, y: 50 });
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setMouseGlow({ x, y });
-  };
-  const features = [
-    "Responsive & mobile-first design",
-    "High-performance, fast-loading pages",
-    "SEO-friendly structure for better ranking",
-    "Enterprise-grade security",
-    "Custom corporate branding & UI/UX",
-    "Multi-language & localization support",
-    "Scalable architecture for future growth",
-    "Real-time analytics & tracking",
-    "Accessibility-friendly design",
-    "Easy-to-manage content updates",
-    "Optimized images & assets for speed",
-    "API-first approach for integrations",
-    "Cloud hosting",
-    "Dark/Light mode support",
-    "Blog & article modules (optional)",
-  ];
-
-  const benefits = [
-    "Build trust & credibility with a professional online presence",
-    "Attract & convert more leads",
-    "Deliver a seamless user experience to customers",
-    "Save time & cost with a scalable solution",
-  ];
-
   return (
-    <div onMouseMove={handleMouseMove} className="min-h-screen bg-white dark:bg-neutral-950 text-gray-900 dark:text-gray-100 relative overflow-hidden px-4">
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 dark:from-blue-950/20 dark:via-transparent dark:to-purple-950/20" />
-      {/* Page glow */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background: `radial-gradient(650px at ${mouseGlow.x}% ${mouseGlow.y}%, rgba(59,130,246,0.10), rgba(147,51,234,0.06) 40%, transparent 70%)`,
-        }}
-      />
-      {/* Banner */}
-      <section className="relative z-10 text-center pt-20 md:py-20 md:pt-36">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-semibold heroTitle mb-4 text-gray-900 dark:text-gray-100"
-        >
-          Build Trust. Boost Growth. Go Next.js with <span className="text-blue-600 dark:text-blue-400">Commeriva</span>.
-        </motion.h1>
-        <p className="text-base md:line-clamp-3 line-clamp-2 text-gray-700 dark:text-gray-300 max-w-3xl mx-auto poppins">
-          Your corporate website is more than just an online presence—it’s your digital identity. At Commeriva, we craft professional corporate & business websites powered by Next.js, combining speed, security, and modern design.
-        </p>
-      </section>
-
-      {/* Features */}
-      <section className="relative z-10 py-16 bg-gray-50 dark:bg-neutral-900/50 px-6">
-        {/* abstract accents */}
-        <div className="pointer-events-none absolute -top-24 left-10 w-64 h-64 rounded-full bg-gradient-to-br from-blue-400/10 to-purple-500/10 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 right-10 w-72 h-72 rounded-full bg-gradient-to-tr from-teal-400/10 to-indigo-500/10 blur-3xl" />
-        <div className="max-w-7xl mx-auto">
-          <motion.h2 variants={titleVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="text-2xl md:text-3xl title font-semibold text-center mb-10 text-gray-900 dark:text-gray-100">Features</motion.h2>
-            {/* strict 3 cards per row on large screens */}
-            <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {features.map((f, i) => {
-              return (
-                <motion.div
-                key={i}
-                  variants={cardVariants}
-                  custom={i}
-                    whileHover={{ y: -4, scale: 1.01 }}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
-                    className={`group relative overflow-hidden bg-gradient-to-br from-white to-gray-50/40 dark:from-neutral-900 dark:to-neutral-950/60 md:bg-white md:dark:bg-neutral-900 border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-md md:shadow-sm dark:shadow-lg dark:md:shadow-sm hover:shadow-2xl active:shadow-2xl transition`}
-                >
-                  {/* soft edge gradient */}
-                  <div className="pointer-events-none absolute -top-16 -left-10 w-44 h-44 rounded-full bg-gradient-to-br from-blue-500/15 to-purple-500/10 blur-2xl" />
-                  <div className="flex items-start gap-3">
-                    <div className="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 dark:bg-neutral-800 border border-gray-200 dark:border-white/10">
-                      <CheckCircle className="w-3.5 h-3.5 text-gray-700 dark:text-gray-300" />
-              </div>
-                    <p className="text-gray-800 dark:text-gray-300 text-sm md:text-base leading-relaxed">{f}</p>
-          </div>
-                  {/* underline accent */}
-                  <div className="absolute left-4 right-4 bottom-3 h-px bg-gradient-to-r from-transparent via-gray-300/50 to-transparent dark:via-white/10" />
-                </motion.div>
-              );
-            })}
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="bg-gray-50 border-b border-gray-200 py-20 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold poppins mb-5">
+              <Briefcase size={14} />
+              Corporate Websites
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 heroTitle mb-5 leading-tight">
+              Professional Websites
+              <br />
+              <span className="text-blue-700">That Build Trust</span>
+            </h1>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto poppins mb-8">
+              Your corporate website is your digital headquarters. We build
+              modern, fast, and SEO-optimized corporate sites that establish
+              credibility and drive growth.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                href="/contact-us"
+                className="inline-flex items-center gap-2 px-7 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-full text-sm font-semibold poppins transition-colors shadow-sm group"
+              >
+                Get a Free Quote
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-0.5 transition-transform"
+                />
+              </Link>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 px-7 py-3 border border-gray-300 text-gray-700 rounded-full text-sm font-semibold poppins transition-colors hover:bg-gray-50"
+              >
+                View Our Work
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Why Next.js */}
-      <section className="relative z-10 py-16">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-5 gap-10 items-start">
-          {/* Sticky left intro */}
-          <motion.div variants={titleVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="md:col-span-2 md:sticky top-24 self-start">
-            <h2 className="md:text-4xl text-3xl font-semibold title mb-4 text-gray-900 dark:text-gray-100">Why Next.js for Your Corporate Website?</h2>
-            <p className="text-gray-700 dark:text-gray-300 poppins">A modern, scalable foundation that keeps your brand fast, secure and future‑ready. Built for marketing teams and engineers alike.</p>
+      {/* What's Included */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 heroTitle">
+              What&apos;s Included
+            </h2>
+            <p className="text-gray-500 mt-3 poppins">
+              Everything a modern corporate presence needs
+            </p>
           </motion.div>
 
-          {/* Broken grid cards */}
-          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} className="md:col-span-3 grid grid-cols-6 gap-4">
-            {[
-              { title: 'Blazing Performance', body: 'Hybrid SSG/SSR, image optimization and edge caching keep every page snappy.', span: 'col-span-6 md:col-span-3', delay: 0 },
-              { title: 'SEO Advantage', body: 'Pre-rendered HTML, metadata control and fast LCP improve rankings.', span: 'col-span-6 md:col-span-3', delay: 1 },
-              { title: 'Secure by Design', body: 'Fewer attack surfaces than legacy CMS. Framework‑level security best‑practices.', span: 'col-span-6 md:col-span-4', delay: 2 },
-              { title: 'Scalable & Future‑Ready', body: 'File‑based routing, app directory and API routes scale with your org.', span: 'col-span-6 md:col-span-2', delay: 3 },
-              { title: 'Modern UX', body: 'Layouts, streaming and transitions deliver app‑like experiences.', span: 'col-span-6 md:col-span-3', delay: 4 },
-              { title: 'Dev Ecosystem', body: 'First‑class TypeScript, linting and tooling for fast, reliable delivery.', span: 'col-span-6 md:col-span-3', delay: 5 },
-            ].map((card, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {features.map((f, i) => (
               <motion.div
-                key={card.title}
-                variants={cardVariants}
-                custom={i}
-                whileHover="hover"
-                className={`${card.span} bg-gradient-to-br from-white to-gray-50/40 dark:from-neutral-900 dark:to-neutral-950/60 md:bg-white md:dark:bg-neutral-900 border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-md md:shadow-sm dark:shadow-lg dark:md:shadow-sm hover:shadow-xl active:shadow-xl transition`}
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5"
               >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{card.title}</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{card.body}</p>
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mb-4">
+                  <f.icon size={20} />
+                </div>
+                <h3 className="text-sm font-bold text-gray-900 mb-1.5 poppins">
+                  {f.title}
+                </h3>
+                <p className="text-xs text-gray-500 leading-relaxed poppins">
+                  {f.desc}
+                </p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="relative z-10 py-16">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2 variants={titleVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="md:text-3xl text-2xl font-semibold mb-8 title text-center text-gray-900 dark:text-gray-100">Benefits for Your Business</motion.h2>
-          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((b, i) => (
-              <motion.div 
-                key={i} 
-                variants={cardVariants} 
-                custom={i} 
-                whileHover="hover" 
-                className="relative overflow-hidden bg-gradient-to-br from-white to-gray-50/40 dark:from-neutral-900 dark:to-neutral-950/60 md:bg-white md:dark:bg-neutral-900 border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-md md:shadow-sm dark:shadow-lg dark:md:shadow-sm hover:shadow-2xl active:shadow-2xl transition"
+      {/* Pages We Build */}
+      <section className="py-16 px-6 bg-gray-50 border-t border-b border-gray-200">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 heroTitle">
+              Pages We Create
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-3">
+            {[
+              "Home Page with hero, stats, and social proof",
+              "About Us with team and company story",
+              "Services / Solutions breakdown",
+              "Portfolio / Case Studies showcase",
+              "Contact page with form and map",
+              "Blog / News section with CMS",
+              "Careers page with job listings",
+              "FAQ and Knowledge Base",
+              "Privacy Policy & Terms",
+              "Custom pages per your needs",
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.04 }}
+                className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100"
               >
-                {/* subtle corner glow */}
-                <div className="pointer-events-none absolute -top-20 -right-10 w-40 h-40 rounded-full bg-gradient-to-br from-teal-400/15 via-blue-500/10 to-purple-500/10 blur-2xl" />
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="text-green-600 dark:text-green-400 w-5 h-5 mt-1" />
-                  <p className="text-gray-800 dark:text-gray-300 md:text-base text-sm leading-relaxed">{b}</p>
-                </div>
-                {/* bottom underline reveal */}
-                <div className="absolute left-4 right-4 bottom-3 h-px bg-gradient-to-r from-transparent via-gray-300/50 to-transparent dark:via-white/10" />
+                <CheckCircle size={16} className="text-green-500 shrink-0" />
+                <span className="text-sm text-gray-700 poppins">{item}</span>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
+
+      <WhatWeBring
+        title="Here's What We Bring to the Table"
+        subtitle="We craft professional corporate websites that build trust, generate leads, and grow your business."
+        tabs={[
+          {
+            label: "Brand Identity",
+            image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&q=80",
+            description: "Your website is the face of your company. We create a cohesive brand identity that communicates professionalism and builds trust.",
+            points: [
+              "<strong>Custom design</strong> – No templates. Every element is crafted to match your brand guidelines.",
+              "<strong>Typography & colors</strong> – Professional font pairings and color palettes that represent your industry.",
+              "<strong>Visual consistency</strong> – Every page, section, and component follows your brand standards.",
+            ]
+          },
+          {
+            label: "SEO & Performance",
+            image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
+            description: "We build corporate sites that rank on Google and load in under 2 seconds. Performance and SEO are not afterthoughts — they're built into the foundation.",
+            points: [
+              "<strong>Server-side rendering</strong> – Pre-rendered pages for instant load times and SEO advantage.",
+              "<strong>Structured data</strong> – Schema markup for rich search results.",
+              "<strong>Core Web Vitals</strong> – Optimized LCP, FID, and CLS scores.",
+              "<strong>Sitemap & meta tags</strong> – Automated generation for every page.",
+            ]
+          },
+          {
+            label: "Content Management",
+            image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80",
+            description: "Your team can update content, publish blog posts, and manage media — without touching a line of code.",
+            points: [
+              "<strong>Easy-to-use CMS</strong> – Intuitive dashboard for content updates.",
+              "<strong>Blog & news</strong> – Built-in blog module with categories and tags.",
+              "<strong>Media library</strong> – Upload and manage images, videos, and documents.",
+            ]
+          },
+          {
+            label: "Lead Generation",
+            image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80",
+            description: "Every corporate site we build is designed to capture leads and convert visitors into clients.",
+            points: [
+              "<strong>Smart contact forms</strong> – Multi-step forms with email notifications.",
+              "<strong>Call-to-action design</strong> – Strategic CTA placement throughout the site.",
+              "<strong>Analytics integration</strong> – Google Analytics, Tag Manager, and conversion tracking.",
+            ]
+          },
+        ]}
+      />
+
+      <CalendlyBooking />
+
+      <FAQSection
+        serviceLabel="Corporate Website"
+        faqs={[
+          { q: "How is a corporate website different from a regular website?", a: "A corporate website is built for credibility and professionalism. It features your company story, services, team, case studies, and lead generation tools — all designed to build trust with potential clients and partners." },
+          { q: "How long does it take to build a corporate website?", a: "Most corporate websites are completed in 2–4 weeks. Complex sites with custom features, blog modules, or multi-language support may take 4–6 weeks." },
+          { q: "Can I update content myself after launch?", a: "Yes. We include an easy-to-use CMS so your team can update pages, blog posts, team members, and media without needing a developer." },
+          { q: "Will my website be SEO optimized?", a: "Absolutely. Every page gets proper meta tags, structured data, sitemap, and performance optimization for the best possible Google ranking." },
+          { q: "Do you design the branding too?", a: "We can. If you already have brand guidelines, we follow them. If not, we can create a visual identity including colors, typography, and logo placement." },
+          { q: "Is hosting and domain included?", a: "We help you set up hosting and domain but these are separate costs. We recommend the best options based on your traffic and budget." },
+        ]}
+      />
 
       {/* CTA */}
-      <section className="relative z-10 py-20 px-6 text-center">
-        <h2 className="md:text-3xl text-2xl font-semibold mb-6 title text-gray-900 dark:text-gray-100">Ready to Build Your Corporate Website?</h2>
-        <p className="text-gray-600 dark:text-gray-300 mb-8 poppins max-w-2xl mx-auto">
-          Let Commeriva help you create a powerful, scalable, and modern corporate presence that grows with your business.
-        </p>
-        <Link href='https://docs.google.com/forms/d/e/1FAIpQLSebEE9Lz4XluDQ9oLs6dS6CH1NNEBQcEmVQ4ncpg9i3uyuy1w/viewform' target="_blank" className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-20 py-2 rounded-full text-base font-semibold hover:bg-gray-700 dark:hover:bg-gray-100 transition shadow-md">
-          Get Started
-        </Link>
+      <section className="py-20 px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 heroTitle mb-3">
+            Ready to Build Your Corporate Website?
+          </h2>
+          <p className="text-gray-500 poppins mb-6">
+            Let Commeriva create a professional digital presence that grows your
+            business.
+          </p>
+          <Link
+            href="/pricing?category=Corporate-Website"
+            className="inline-flex items-center gap-2 px-7 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-full text-sm font-semibold poppins transition-colors shadow-sm group"
+          >
+            View Corporate Pricing
+            <ArrowRight
+              size={16}
+              className="group-hover:translate-x-0.5 transition-transform"
+            />
+          </Link>
+        </motion.div>
       </section>
     </div>
   );

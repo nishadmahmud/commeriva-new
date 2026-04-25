@@ -1,90 +1,37 @@
-"use client"
+"use client";
 
-import React from "react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { ArrowRight, Users, Target, Zap } from "lucide-react"
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.95 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      delay: i * 0.1,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  }),
-  hover: {
-    y: -8,
-    scale: 1.02,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const titleVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
-};
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import {
+  ArrowRight,
+  Users,
+  Target,
+  Zap,
+  ShoppingCart,
+  Briefcase,
+  Palette,
+  Smartphone,
+  Globe,
+} from "lucide-react";
 
 export default function AboutUs() {
-  const [mouseGlow, setMouseGlow] = React.useState({ x: 50, y: 50 });
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setMouseGlow({ x, y });
-  };
-
   return (
-    <div className="bg-white dark:bg-neutral-950 text-gray-800 dark:text-gray-200 min-h-screen relative overflow-hidden" onMouseMove={handleMouseMove}>
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 dark:from-blue-950/20 dark:via-transparent dark:to-purple-950/20"></div>
-      
-      {/* Subtle mouse-follow neon glow */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background: `radial-gradient(650px at ${mouseGlow.x}% ${mouseGlow.y}%, rgba(59,130,246,0.10), rgba(147,51,234,0.06) 40%, transparent 70%)`,
-        }}
-      />
-      
+    <div className="bg-white text-gray-800 min-h-screen">
       {/* Hero Section */}
-      <section className="relative z-10 py-20 px-6 md:px-20 text-center border-b border-gray-200 dark:border-white/10">
+      <section className="py-20 px-6 md:px-20 text-center bg-gray-50 border-b border-gray-200">
         <motion.div
-          variants={titleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl heroTitle md:text-5xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
-            About <span className="text-gray-700 dark:text-gray-300">Commeriva</span>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold poppins mb-4">
+            About Us
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 heroTitle">
+            About <span className="text-orange-600">Commeriva</span>
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl poppins mx-auto text-gray-600 dark:text-gray-300">
+          <p className="text-lg md:text-xl max-w-3xl poppins mx-auto text-gray-500">
             We craft modern, high-performing websites that help businesses grow,
             connect, and succeed in the digital world.
           </p>
@@ -92,127 +39,198 @@ export default function AboutUs() {
       </section>
 
       {/* Mission Section */}
-      <section className="relative z-10 py-16 px-6 md:px-20 text-center">
+      <section className="py-16 px-6 md:px-20 text-center">
         <motion.div
-          variants={titleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-sm mb-6">
-            <Target size={16} className="mr-2" />
+          <div className="inline-flex items-center bg-orange-50 border border-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-xs font-semibold poppins mb-4">
+            <Target size={14} className="mr-2" />
             Our Mission
           </div>
-          <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100 title">Empowering Digital Success</h2>
-          <p className="max-w-2xl mx-auto text-lg leading-relaxed text-gray-600 dark:text-gray-300 poppins">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900 heroTitle">
+            Empowering Digital Success
+          </h2>
+          <p className="max-w-2xl mx-auto text-lg leading-relaxed text-gray-500 poppins">
             At Commeriva, our mission is simple: to empower businesses and
             individuals with functional, user-friendly, and elegant websites.
-            Whether it's eCommerce, corporate branding, or creative portfolios, we
-            deliver digital experiences that leave a lasting impression.
+            Whether it&apos;s eCommerce, corporate branding, or creative
+            portfolios, we deliver digital experiences that leave a lasting
+            impression.
           </p>
         </motion.div>
       </section>
 
       {/* Services Section */}
-      <section className="relative z-10 py-16 px-6 md:px-20 border-t border-gray-200 dark:border-white/10">
+      <section className="py-16 px-6 md:px-20 bg-gray-50 border-t border-b border-gray-200">
         <motion.div
-          variants={titleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-sm mb-6">
-            <Zap size={16} className="mr-2" />
+          <div className="inline-flex items-center bg-blue-50 border border-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs font-semibold poppins mb-4">
+            <Zap size={14} className="mr-2" />
             Our Expertise
           </div>
-          <h2 className="text-3xl title font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-bold text-gray-900 heroTitle">
             What We Do
           </h2>
         </motion.div>
-        
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 poppins"
-        >
+
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto poppins">
           {[
             {
               title: "E-Commerce Websites",
               desc: "Engaging online stores with smooth checkout, secure payments, and clean UI.",
-              icon: Users,
-              color: "from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20",
-              iconColor: "text-blue-600 dark:text-blue-400",
-            },
-            {
-              title: "Portfolio & Branding",
-              desc: "Showcase your creativity and brand identity with minimal, modern portfolio websites.",
-              icon: Target,
-              color: "from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20",
-              iconColor: "text-purple-600 dark:text-purple-400",
+              icon: ShoppingCart,
+              color: "bg-blue-50 border-blue-100",
+              iconColor: "text-blue-600 bg-blue-100",
             },
             {
               title: "Corporate Websites",
               desc: "Professional and scalable websites that reflect your business credibility.",
-              icon: Zap,
-              color: "from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20",
-              iconColor: "text-green-600 dark:text-green-400",
+              icon: Briefcase,
+              color: "bg-green-50 border-green-100",
+              iconColor: "text-green-600 bg-green-100",
+            },
+            {
+              title: "Landing Pages",
+              desc: "Conversion-focused funnel pages designed to capture leads and drive sales.",
+              icon: Globe,
+              color: "bg-purple-50 border-purple-100",
+              iconColor: "text-purple-600 bg-purple-100",
+            },
+            {
+              title: "Portfolio & Branding",
+              desc: "Showcase your creativity and brand identity with minimal, modern portfolio websites.",
+              icon: Palette,
+              color: "bg-orange-50 border-orange-100",
+              iconColor: "text-orange-600 bg-orange-100",
+            },
+            {
+              title: "Mobile Apps",
+              desc: "Custom Flutter and native mobile applications built for performance.",
+              icon: Smartphone,
+              color: "bg-cyan-50 border-cyan-100",
+              iconColor: "text-cyan-600 bg-cyan-100",
             },
           ].map((service, i) => {
             const IconComponent = service.icon;
             return (
               <motion.div
                 key={i}
-                variants={cardVariants}
-                custom={i}
-                whileHover="hover"
-                className={`bg-gradient-to-br ${service.color} border border-gray-200 dark:border-white/10 rounded-2xl p-8 text-center shadow-sm hover:shadow-xl transition-all duration-300`}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className={`${service.color} border rounded-2xl p-6 text-center hover:shadow-md transition-all duration-300 hover:-translate-y-1`}
               >
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white dark:bg-neutral-800 shadow-sm mb-6`}>
-                  <IconComponent className={`w-8 h-8 ${service.iconColor}`} />
+                <div
+                  className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${service.iconColor} mb-4`}
+                >
+                  <IconComponent className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+                <h3 className="text-sm font-bold mb-2 text-gray-900">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{service.desc}</p>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  {service.desc}
+                </p>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
+      </section>
+
+      {/* Team Values */}
+      <section className="py-16 px-6 md:px-20">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center bg-orange-50 border border-orange-100 text-orange-600 px-4 py-1.5 rounded-full text-xs font-semibold poppins mb-4">
+              <Users size={14} className="mr-2" />
+              Our Values
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 heroTitle">
+              Why Choose Commeriva
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Client-First Approach",
+                desc: "Every decision we make starts with your business goals. We listen, understand, and deliver.",
+              },
+              {
+                title: "Quality Over Quantity",
+                desc: "We don't cut corners. Every project gets our full attention, from pixel-perfect design to clean code.",
+              },
+              {
+                title: "Long-Term Partnership",
+                desc: "We're not just vendors — we're your digital partners. We grow with your business.",
+              },
+            ].map((value, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-all duration-300"
+              >
+                <div className="w-10 h-10 rounded-xl bg-gray-900 text-white flex items-center justify-center text-lg font-bold heroTitle mb-4">
+                  {i + 1}
+                </div>
+                <h3 className="text-base font-bold text-gray-900 mb-2 heroTitle">
+                  {value.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed poppins">
+                  {value.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative z-10 py-20 px-6 md:px-20 text-center border-t border-gray-200 dark:border-white/10">
+      <section className="py-20 px-6 md:px-20 text-center bg-gray-50 border-t border-gray-200">
         <motion.div
-          variants={titleVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl heroTitle font-bold mb-6 text-gray-900 dark:text-gray-100">
-            Let's Build Something Great Together
+          <h2 className="text-3xl md:text-4xl heroTitle font-bold mb-4 text-gray-900">
+            Let&apos;s Build Something Great Together
           </h2>
-          <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300 poppins">
+          <p className="mb-8 max-w-2xl mx-auto text-lg text-gray-500 poppins">
             Partner with Commeriva and take your brand to the next level with a
             website designed for impact.
           </p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <Link
+            target="_blank"
+            href="https://wa.me/+8801677182084"
+            className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-semibold px-8 py-3 rounded-full transition-colors shadow-sm poppins group"
           >
-            <Link
-              target="_blank" 
-              href="https://wa.me/+8801677182084"
-              className="inline-flex items-center gap-2 border border-gray-800 dark:border-white text-gray-100 dark:text-gray-900 bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-100 font-medium px-8 py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              Get in Touch
-              <ArrowRight size={18} />
-            </Link>
-          </motion.div>
+            Get in Touch
+            <ArrowRight
+              size={18}
+              className="group-hover:translate-x-0.5 transition-transform"
+            />
+          </Link>
         </motion.div>
       </section>
     </div>
-  )
+  );
 }

@@ -1,86 +1,181 @@
-'use client'
+"use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import useSWR from "swr";
-import { fetcher, userId } from "../../page";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+
+const BLOG_API = "https://outletexpense.xyz/api/latest-ecommerce-blog-list/217";
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+function estimateReadTime(html) {
+  const text = html?.replace(/<[^>]+>/g, "") || "";
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(2, Math.ceil(words / 200));
+}
 
 export default function BlogDetails() {
   const { id } = useParams();
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  const { data, error, isLoading } = useSWR(
-    `${process.env.NEXT_PUBLIC_API}/latest-ecommerce-blog-list/${userId}`,
-    fetcher
-  );
+  const { data, error, isLoading } = useSWR(BLOG_API, fetcher);
 
-  if (isLoading) return <p className="text-center py-10">Loading blog...</p>;
-  if (error) return <p className="text-center py-10 text-red-500">Failed to load blog.</p>;
+  if (isLoading)
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <p className="mt-4 text-gray-500 poppins">Loading blog...</p>
+        </div>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <p className="text-red-500 poppins">Failed to load blog.</p>
+      </div>
+    );
 
   const blog = data?.data?.find((b) => String(b.id) === id);
 
-  if (!blog) return <p className="text-center py-10">Blog not found.</p>;
+  if (!blog)
+    return (
+      <div className="bg-white min-h-screen flex flex-col items-center justify-center gap-4">
+        <p className="text-gray-600 text-lg poppins">Blog not found.</p>
+        <Link
+          href="/blogs"
+          className="inline-flex items-center gap-2 text-blue-700 hover:text-blue-800 font-semibold poppins"
+        >
+          <ArrowLeft size={16} />
+          Back to all blogs
+        </Link>
+      </div>
+    );
 
-  const handleMouse = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
+  const readTime = estimateReadTime(blog.description);
 
   return (
-    <section
-      className="relative min-h-screen bg-white dark:bg-neutral-950 text-black dark:text-gray-100 overflow-hidden pb-20 pt-10"
-      onMouseMove={handleMouse}
-      style={{ ["--x"]: `${mousePos.x}px`, ["--y"]: `${mousePos.y}px` }}
-    >
-      {/* subtle mouse-follow glow */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background: `radial-gradient(650px circle at var(--x) var(--y), rgba(59,130,246,0.08), transparent 70%)`,
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0 z-0 hidden dark:block"
-        style={{
-          background: `radial-gradient(700px circle at var(--x) var(--y), rgba(255,255,255,0.06), transparent 75%)`,
-        }}
-      />
-
-      {/* Hero banner with overlayed title */}
-      <div className="relative max-w-4xl mx-auto px-4 h-60 md:h-80">
-        <Image
-          unoptimized
-          fill
-          sizes="100vw"
-          src={blog.image}
-          alt={blog.title}
-          className="object-contain"
-        />
-      </div>
-
-      {/* Title below image */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 mt-4 md:mt-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="text-2xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-gray-100 leading-snug"
+    <article className="bg-white min-h-screen pb-20">
+      {/* Back navigation */}
+      <div className="max-w-4xl mx-auto px-6 pt-8">
+        <Link
+          href="/blogs"
+          className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-700 transition-colors poppins group"
         >
-          {blog.title}
-        </motion.h1>
+          <ArrowLeft
+            size={16}
+            className="group-hover:-translate-x-0.5 transition-transform"
+          />
+          Back to all blogs
+        </Link>
       </div>
 
-      {/* Content card */}
-      <div className="relative z-10 mt-8 md:mt-10 max-w-4xl lg:max-w-5xl mx-auto px-4">
-        <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white/95 dark:bg-neutral-900/85 backdrop-blur p-6 md:p-8 lg:p-10 shadow-2xl">
-          <div
-            className="prose prose-neutral dark:prose-invert max-w-none prose-headings:mb-3 prose-p:leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: blog.description }}
+      {/* Hero Image */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-4xl mx-auto px-6 mt-6"
+      >
+        <div className="relative w-full aspect-[16/8] rounded-2xl overflow-hidden bg-gray-100">
+          <Image
+            unoptimized
+            fill
+            sizes="100vw"
+            src={blog.image}
+            alt={blog.title}
+            className="object-cover"
+            priority
           />
         </div>
+      </motion.div>
+
+      {/* Title & Meta */}
+      <div className="max-w-4xl mx-auto px-6 mt-8">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <h1 className="text-2xl md:text-4xl lg:text-[2.6rem] font-bold text-gray-900 heroTitle leading-tight">
+            {blog.title}
+          </h1>
+
+          <div className="flex flex-wrap items-center gap-4 mt-5 text-sm text-gray-400 poppins">
+            <div className="flex items-center gap-1.5">
+              <Calendar size={15} />
+              <span>{formatDate(blog.created_at)}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Clock size={15} />
+              <span>{readTime} min read</span>
+            </div>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Link copied!");
+              }}
+              className="flex items-center gap-1.5 hover:text-blue-600 transition-colors cursor-pointer"
+            >
+              <Share2 size={15} />
+              <span>Share</span>
+            </button>
+          </div>
+        </motion.div>
       </div>
-    </section>
+
+      {/* Divider */}
+      <div className="max-w-4xl mx-auto px-6 mt-6">
+        <div className="h-px bg-gray-200" />
+      </div>
+
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="max-w-4xl mx-auto px-6 mt-8"
+      >
+        <div
+          className="prose prose-lg prose-gray max-w-none
+            prose-headings:font-bold prose-headings:text-gray-900 prose-headings:heroTitle
+            prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-3
+            prose-p:text-gray-600 prose-p:leading-relaxed prose-p:poppins
+            prose-li:text-gray-600 prose-li:poppins
+            prose-strong:text-gray-900
+            prose-a:text-blue-700 prose-a:no-underline hover:prose-a:underline"
+          dangerouslySetInnerHTML={{ __html: blog.description }}
+        />
+      </motion.div>
+
+      {/* Bottom CTA */}
+      <div className="max-w-4xl mx-auto px-6 mt-16">
+        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 text-center">
+          <h3 className="text-xl font-bold text-gray-900 heroTitle mb-2">
+            Ready to build your next project?
+          </h3>
+          <p className="text-gray-500 poppins mb-5">
+            Let Commeriva transform your business with a website that converts.
+          </p>
+          <Link
+            href="/contact-us"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-full text-sm font-semibold poppins transition-colors shadow-sm"
+          >
+            Get a Free Consultation
+          </Link>
+        </div>
+      </div>
+    </article>
   );
 }

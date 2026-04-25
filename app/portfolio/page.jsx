@@ -1,164 +1,18 @@
-// "use client"
+"use client";
 
-// import { useState } from "react"
-// import { motion, AnimatePresence } from "framer-motion"
-// import Image from "next/image"
-// import Link from "next/link"
-// import { ExternalLink } from "lucide-react"
-
-
-
-// const categories = ["All", "Next.js", "React", "Firebase", "Laravel", "Php", "Tailwind", "API Integration", "HTML", "CSS", "JavaScript", "MySql", "Express"]
-
-// export default function Portfolio() {
-//   const [activeCategory, setActiveCategory] = useState("All")
-
-//   const filteredProjects =
-//     activeCategory === "All"
-//       ? projects
-//       : projects.filter((p) => p.technologies.includes(activeCategory))
-
-//   return (
-//     <div className="min-h-screen bg-white py-12 px-4 md:px-12 lg:px-24">
-//       {/* Header */}
-//       <div className="text-center mb-10">
-//         <h1 className="text-3xl md:text-5xl font-semibold text-gray-900 title">Our Portfolio</h1>
-//         <p className="text-gray-600 poppins">Select a project to explore</p>
-//       </div>
-
-//       {/* Category Filter */}
-//      <div className="flex gap-3 mb-12 w-full overflow-x-auto no-scrollbar scrollbar-hide">
-//   {categories.map((category) => (
-//     <button
-//       key={category}
-//       onClick={() => setActiveCategory(category)}
-//       className={`px-4 py-2 text-sm whitespace-nowrap rounded-full border transition-all ${
-//         activeCategory === category
-//           ? "bg-gray-900 text-white border-gray-900"
-//           : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
-//       }`}
-//     >
-//       {category}
-//     </button>
-//   ))}
-// </div>
-
-
-//       {/* Projects Grid */}
-//       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//         <AnimatePresence>
-//           {filteredProjects.map((project) => (
-//             <motion.div
-//               key={project.id}
-//               initial={{ opacity: 0, y: 50 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               exit={{ opacity: 0, y: -50 }}
-//               transition={{ duration: 0.4 }}
-//               className="bg-white border rounded-2xl shadow-sm hover:shadow-lg transition-all overflow-hidden"
-//             >
-//               {/* Project Image */}
-//               <div className="relative h-40 w-full">
-//                 <Image
-//                   src={project.image}
-//                   alt={project.title}
-//                   fill
-//                   className="object-cover"
-//                 />
-//               </div>
-
-//               {/* Content */}
-//               <div className="p-5">
-//                 <div className="flex flex-wrap gap-2 mb-3">
-//                   {project.technologies.slice(0, 2).map((tech, i) => (
-//                     <span
-//                       key={i}
-//                       className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded"
-//                     >
-//                       {tech}
-//                     </span>
-//                   ))}
-//                 </div>
-//                 <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-//                 <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-//                   {project.description}
-//                 </p>
-//                 <Link
-//                   href={project.liveLink}
-//                   target="_blank"
-//                   rel="noopener noreferrer"
-//                   className="flex justify-center items-center gap-2 w-full text-sm font-medium text-gray-900 border border-gray-900 px-4 py-2 rounded-sm hover:bg-gray-900 hover:text-white transition"
-//                 >
-//                   View Project
-//                   <ExternalLink size={18}></ExternalLink>
-//                 </Link>
-//               </div>
-//             </motion.div>
-//           ))}
-//         </AnimatePresence>
-//       </div>
-//     </div>
-//   )
-// }
-
-'use client'
-
-import React from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
-import { Eye, ExternalLink } from "lucide-react"
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.95 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      delay: i * 0.1,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  }),
-  hover: {
-    y: -8,
-    scale: 1.02,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-    },
-  },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const titleVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
-};
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { Eye, ExternalLink, ArrowRight } from "lucide-react";
 
 const projects = [
   {
     id: 1,
     title: "Gadget Bodda",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757832351.jpg",
-    image: "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409080.png",
+    image:
+      "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409080.png",
     description:
       "A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.",
     liveLink: "https://www.gadgetboddaa.com/",
@@ -168,7 +22,8 @@ const projects = [
     id: 2,
     title: "Mobile Club",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757832398.jpg",
-    image: "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409274.png",
+    image:
+      "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409274.png",
     description:
       "Mobile Club is a famous shop in Jamuna Future park in Bangladesh. They are sale used iPhone and Gadgets Accessories.",
     liveLink: "https://www.mobileclub.co/",
@@ -178,7 +33,8 @@ const projects = [
     id: 3,
     title: "Satsuna Corporation",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834457.png",
-    image: "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409303.jpg",
+    image:
+      "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409303.jpg",
     description:
       "Satsuna is a Japanese blog website. They publish famous blogs on Japan.",
     liveLink: "https://www.satsuna.co.jp",
@@ -188,7 +44,8 @@ const projects = [
     id: 4,
     title: "CeL TeL",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834023.png",
-    image: "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409240.png",
+    image:
+      "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409240.png",
     description:
       "A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.",
     liveLink: "https://www.celtelbd.com/",
@@ -198,7 +55,8 @@ const projects = [
     id: 5,
     title: "Morshed Mart",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757833877.png",
-    image: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757833724.png",
+    image:
+      "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757833724.png",
     description:
       "Morshed Mart is a fashion e-commerce store. They sell T-shirts and branded shirts.",
     liveLink: "https://www.morshedmart.com/",
@@ -208,7 +66,8 @@ const projects = [
     id: 6,
     title: "Elite",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757833939.png",
-    image: "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409329.png",
+    image:
+      "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409329.png",
     description:
       "Elite is a quality laptop seller. They sell many 2nd hand and new laptops.",
     liveLink: "https://www.eliteebd.com/",
@@ -218,7 +77,8 @@ const projects = [
     id: 7,
     title: "Apple Newton Bd",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834132.jpg",
-    image: "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409124.png",
+    image:
+      "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757409124.png",
     description:
       "A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.",
     liveLink: "https://applenewtonbd.com/",
@@ -228,7 +88,8 @@ const projects = [
     id: 8,
     title: "Shahensha Gadget",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834292.png",
-    image: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834221.png",
+    image:
+      "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834221.png",
     description:
       "A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.",
     liveLink: "https://shahenshahgadgets.com",
@@ -238,7 +99,8 @@ const projects = [
     id: 9,
     title: "Apple Mart BD",
     logo: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834693.png",
-    image: "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834622.png",
+    image:
+      "https://www.outletexpense.xyz/uploads/168-Khan-Sahadat/1757834622.png",
     description:
       "A full-stack e-commerce solution with payment integration, user authentication, and admin dashboard.",
     liveLink: "https://www.applemartbd.com",
@@ -330,7 +192,7 @@ const projects = [
     logo: "https://www.outletexpense.xyz/uploads/215-Rifat-Hasan/1762859683.png",
     image: "/MKS Outfit.png",
     description:
-      "A fashion-ecommerce destination offering curated women’s (and possibly men’s) apparel and accessories with stylish seasonal collections, easy browsing of looks, and secure online checkout for shoppers in Bangladesh",
+      "A fashion-ecommerce destination offering curated women's (and possibly men's) apparel and accessories with stylish seasonal collections, easy browsing of looks, and secure online checkout for shoppers in Bangladesh",
     liveLink: "https://www.mksoutfit.com/",
     technologies: ["Next.js", "Tailwind", "Framer Motion"],
   },
@@ -374,117 +236,156 @@ const projects = [
     liveLink: "https://www.brandempirebd.com/",
     technologies: ["Next.js", "Tailwind", "Framer Motion"],
   },
-]
+];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06, delayChildren: 0.1 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 export default function Portfolio() {
-  const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
-
-  const handleMouse = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950 py-12 px-4 relative overflow-hidden" onMouseMove={handleMouse} style={{ ["--x"]: `${mousePos.x}px`, ["--y"]: `${mousePos.y}px` }}>
-      {/* subtle mouse-follow glow */}
-      <div className="pointer-events-none absolute inset-0 z-0" style={{ background: `radial-gradient(650px circle at var(--x) var(--y), rgba(59,130,246,0.08), transparent 70%)` }} />
-      <div className="pointer-events-none absolute inset-0 z-0 hidden dark:block" style={{ background: `radial-gradient(700px circle at var(--x) var(--y), rgba(255,255,255,0.06), transparent 75%)` }} />
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 dark:from-blue-950/20 dark:via-transparent dark:to-purple-950/20"></div>
+    <section className="min-h-screen bg-gray-50 py-16 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-xs font-semibold poppins mb-4">
+            ✦ Our Work
+          </span>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 heroTitle">
+            Our Portfolio
+          </h1>
+          <p className="text-gray-500 mt-3 max-w-xl mx-auto poppins">
+            Real projects we've built for real businesses. From e-commerce to
+            corporate — every project is crafted for performance.
+          </p>
+        </motion.div>
 
-      {/* Header */}
-      <motion.div
-        variants={titleVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="relative z-10 text-center mb-12"
-      >
-        <h1 className="text-3xl md:text-5xl font-semibold heroTitle text-gray-900 dark:text-gray-100">Our Portfolio</h1>
-        <p className="text-gray-600 dark:text-gray-300 mt-2">Select a project to explore</p>
-      </motion.div>
+        {/* Projects Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AnimatePresence>
+            {projects.map((project) => (
+              <motion.div
+                key={project.id}
+                variants={cardVariants}
+                className="group"
+              >
+                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+                  {/* Project Image */}
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                     unoptimized/>
 
-      {/* Projects Grid */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        className="relative z-10 max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
-      >
-        <AnimatePresence>
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              variants={cardVariants}
-              custom={index}
-              whileHover="hover"
-              className="group"
-            >
-              <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-white/10 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-full">
-                {/* Project Image */}
-                <div className="relative h-52 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                  {/* Technology badges */}
-                  <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-                    {project.technologies.slice(0, 2).map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs px-2 py-1 bg-white/90 dark:bg-neutral-800/90 text-gray-700 dark:text-gray-300 rounded-full backdrop-blur-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                    {/* Technology badges */}
+                    <div className="absolute top-3 left-3 flex flex-wrap gap-1">
+                      {project.technologies.slice(0, 2).map((tech, i) => (
+                        <span
+                          key={i}
+                          className="text-xs px-2 py-0.5 bg-white/90 text-gray-700 rounded-full backdrop-blur-sm shadow-sm font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="mb-4">
-                    <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 leading-relaxed">
+                  {/* Content */}
+                  <div className="p-5 flex flex-col flex-grow">
+                    <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed poppins mb-4">
                       {project.description}
                     </p>
-                  </div>
 
-                  {/* Footer Section (logo + title + button) */}
-                  <div className="mt-auto flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <Image
-                        unoptimized
-                        src={project.logo}
-                        alt={project.title}
-                        width={40}
-                        height={40}
-                        className="rounded-full border-2 border-gray-200 dark:border-white/10 object-cover"
-                      />
-                      <h3 className="text-base font-semibold text-gray-900 dark:text-gray-100 poppins">{project.title}</h3>
+                    {/* Footer — logo + title + view button */}
+                    <div className="mt-auto flex items-center justify-between gap-3 pt-3 border-t border-gray-100">
+                      <div className="flex items-center gap-2.5">
+                        <Image
+                          unoptimized
+                          src={project.logo}
+                          alt={project.title}
+                          width={32}
+                          height={32}
+                          className="rounded-full border border-gray-200 object-cover"
+                        />
+                        <h3 className="text-sm font-semibold text-gray-900 poppins truncate max-w-[140px]">
+                          {project.title}
+                        </h3>
+                      </div>
+
+                      <Link
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors group/link shrink-0"
+                      >
+                        <Eye size={16} />
+                        <span className="hidden sm:inline">View</span>
+                        <ExternalLink
+                          size={12}
+                          className="opacity-0 group-hover/link:opacity-100 transition-opacity"
+                        />
+                      </Link>
                     </div>
-
-                    <Link
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 group/link"
-                    >
-                      <Eye size={18} />
-                      <span className="hidden sm:inline">View</span>
-                      <ExternalLink size={14} className="opacity-0 group-hover/link:opacity-100 transition-opacity duration-200" />
-                    </Link>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
-    </div>
-  )
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mt-16"
+        >
+          <div className="bg-white border border-gray-200 rounded-2xl p-10 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 heroTitle mb-2">
+              Have a project in mind?
+            </h2>
+            <p className="text-gray-500 poppins mb-6">
+              Let's turn your idea into a high-performing digital product.
+            </p>
+            <Link
+              href="/contact-us"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-full text-sm font-semibold poppins transition-colors shadow-sm group"
+            >
+              Get a Free Consultation
+              <ArrowRight
+                size={16}
+                className="group-hover:translate-x-0.5 transition-transform"
+              />
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

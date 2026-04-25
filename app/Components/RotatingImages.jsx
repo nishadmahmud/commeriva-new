@@ -81,7 +81,7 @@ const RotatingImages = forwardRef((props, ref) => {
             src={images[currentIndex]}
             alt={`Rotating logo ${currentIndex}`}
             className={cn("w-32 h-32 object-contain", imgClassName)}
-          />
+           unoptimized/>
         </motion.div>
       </AnimatePresence>
     </motion.div>

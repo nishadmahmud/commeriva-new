@@ -47,7 +47,7 @@
 //           transition={{ duration: 0.8 }}
 //           className="flex items-center justify-center"
 //         >
-//           <Image src={logo.src} alt={logo.alt} width={144} height={32} />
+//           <Image src={logo.src} alt={logo.alt} width={144} height={32}  unoptimized/>
 //         </motion.div>
 //       ))}
 //     </div>

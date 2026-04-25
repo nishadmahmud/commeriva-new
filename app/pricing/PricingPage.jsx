@@ -445,9 +445,9 @@ export default function Pricing() {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950 relative overflow-hidden">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 dark:from-blue-950/20 dark:via-transparent dark:to-purple-950/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30"></div>
       
       {/* Header Section */}
       <div className="relative z-10 md:py-16 py-12 px-4 sm:px-6 lg:px-8">
@@ -459,20 +459,20 @@ export default function Pricing() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-12 sm:mb-16"
           >
-            <div className="inline-flex items-center bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-xs sm:text-sm mb-6">
-              <span className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full mr-1.5 mt-0.5"></span>
+            <div className="inline-flex items-center bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs sm:text-sm mb-6">
+              <span className="w-2 h-2 bg-gray-500 rounded-full mr-1.5 mt-0.5"></span>
               Building Websites That Grow With You
             </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-gray-100 mb-6 leading-snug heroTitle">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-semibold text-gray-900 mb-6 leading-snug heroTitle">
               Start for Free, Scale as You <br className="hidden sm:block" />
               Grow with{" "}
-              <span className="bg-yellow-300 dark:bg-yellow-400 px-2 text-gray-700 dark:text-gray-900">
+              <span className="bg-yellow-300 px-2 text-gray-700">
                 Commeriva
               </span>{" "}
               Solutions
             </h1>
 
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               We only charge for what you use. If you have a quiet month, pay
               less. If your workload spikes, we can handle it. And no matter how
               simple or complex an operation is, it counts as one and costs the
@@ -486,7 +486,7 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex bg-gray-100 dark:bg-neutral-800 rounded-3xl p-1"
+            className="inline-flex bg-gray-100 rounded-3xl p-1"
           >
             {categories.map((cat) => (
               <button
@@ -494,8 +494,8 @@ export default function Pricing() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`md:px-6 px-4 py-2 rounded-3xl font-medium transition-all cursor-pointer duration-300 md:text-base text-xs ${
                   selectedCategory === cat
-                    ? "bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-100 shadow-sm"
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+                    ? "bg-white text-gray-900 shadow-sm"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 {cat}
@@ -524,11 +524,11 @@ export default function Pricing() {
                  custom={index}
                  whileHover="hover"
                  className={`relative flex flex-col rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl bg-gradient-to-br poppins border-2 ${
-                   plan.popular ? "ring-2 ring-teal-100 dark:ring-teal-900/30 shadow-md" : "shadow-lg"
+                   plan.popular ? "ring-2 ring-teal-100 shadow-md" : "shadow-lg"
                  } ${
                    plan.popular 
-                     ? "from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800" 
-                     : "from-slate-50 to-slate-100 dark:from-neutral-800 dark:to-neutral-900 border-slate-200 dark:border-white/10"
+                     ? "from-blue-50 to-indigo-50 border-blue-200" 
+                     : "from-slate-50 to-slate-100 border-slate-200"
                  }`}
                >
                  {plan.popular && (
@@ -543,34 +543,34 @@ export default function Pricing() {
                  <div className="flex items-center mb-4">
                    <div
                      className={`p-3 rounded-2xl ${
-                       plan.popular ? "bg-blue-100 dark:bg-blue-900/30" : "bg-white dark:bg-neutral-700"
+                       plan.popular ? "bg-blue-100" : "bg-white"
                      } shadow-sm`}
                    >
                      <IconComponent
                        className={`w-6 h-6 ${
-                         plan.popular ? "text-teal-500" : "text-gray-700 dark:text-gray-300"
+                         plan.popular ? "text-teal-500" : "text-gray-700"
                        }`}
                      />
                    </div>
                    <div className="ml-4">
-                     <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+                     <h3 className="text-2xl font-semibold text-gray-900">
                        {plan.name}
                      </h3>
                    </div>
                  </div>
 
                  {/* description */}
-                 <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm leading-relaxed">
+                 <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                    {plan.description}
                  </p>
 
                  {/* price */}
                  <div className="mb-8">
                    <div className="flex items-baseline">
-                     <span className="md:text-3xl text-2xl font-semibold text-gray-900 dark:text-gray-100">
+                     <span className="md:text-3xl text-2xl font-semibold text-gray-900">
                        {userCountry === "BD" ? plan.priceBDT : plan.priceUSD}
                      </span>
-                     <span className="text-gray-500 dark:text-gray-400 ml-2 text-sm">{plan.period}</span>
+                     <span className="text-gray-500 ml-2 text-sm">{plan.period}</span>
                    </div>
                  </div>
 
@@ -579,18 +579,18 @@ export default function Pricing() {
                  {plan.features.map((feature, i) => (
                    <li key={i} className="flex items-start">
                      <div className="flex-shrink-0 mt-1">
-                       <CircleDot className="w-4 h-4 text-gray-800 dark:text-gray-300" />
+                       <CircleDot className="w-4 h-4 text-gray-800" />
                      </div>
-                     <span className="ml-3 text-gray-700 dark:text-gray-300 leading-relaxed">{feature}</span>
+                     <span className="ml-3 text-gray-700 leading-relaxed">{feature}</span>
                    </li>
                  ))}
 
                  {plan?.serviceCharge && (
                    <li className="flex items-start">
                      <div className="flex-shrink-0 mt-1">
-                       <CircleDot className="w-4 h-4 text-gray-800 dark:text-gray-300" />
+                       <CircleDot className="w-4 h-4 text-gray-800" />
                      </div>
-                     <span className="ml-3 text-gray-700 dark:text-gray-300 leading-relaxed">
+                     <span className="ml-3 text-gray-700 leading-relaxed">
                        Monthly Charge:{" "}
                        {userCountry === "BD"
                          ? plan.serviceCharge.find(c => c.priceBDT)?.priceBDT
@@ -611,7 +611,7 @@ export default function Pricing() {
                        className={`w-full py-3 rounded-full font-semibold text-base transition-all duration-200 ${
                          plan.popular
                            ? "bg-primary-color text-white shadow-lg hover:shadow-xl"
-                           : "bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-100 border-2 border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 hover:shadow-md"
+                           : "bg-white text-gray-900 border-2 border-gray-200 hover:border-gray-300 hover:shadow-md"
                        }`}
                      >
                        {plan.buttonText}
@@ -626,7 +626,7 @@ export default function Pricing() {
       </div>
 
       {/* Feature Comparison Table */}
-      <div className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-slate-50 dark:from-neutral-950 dark:to-neutral-900">
+      <div className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             variants={titleVariants}
@@ -635,10 +635,10 @@ export default function Pricing() {
             viewport={{ once: true, margin: "-100px" }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-gray-100 mb-2 title">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-2 title">
               Compare All Features
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
+            <p className="text-lg text-gray-600">
               See what's included in each plan
             </p>
           </motion.div>
@@ -648,37 +648,37 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-white/10"
+            className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200"
           >
             {/* Table Header */}
-            <div className="grid grid-cols-4 p-6 border-b border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-neutral-800">
-              <div className="font-semibold text-gray-900 dark:text-gray-100 text-lg">
+            <div className="grid grid-cols-4 p-6 border-b border-gray-200 bg-gray-50">
+              <div className="font-semibold text-gray-900 text-lg">
                 Features
               </div>
-              <div className="text-center font-semibold text-gray-900 dark:text-gray-100">
+              <div className="text-center font-semibold text-gray-900">
                 Basic
               </div>
-              <div className="text-center font-semibold text-gray-900 dark:text-gray-100">
+              <div className="text-center font-semibold text-gray-900">
                 Standard
               </div>
-              <div className="text-center font-semibold text-gray-900 dark:text-gray-100">
+              <div className="text-center font-semibold text-gray-900">
                 Premium
               </div>
             </div>
 
             {comparisonFeatures.map((section, sectionIdx) => (
               <div key={sectionIdx}>
-                <div className="bg-slate-50 dark:bg-neutral-800 px-6 py-4 border-b border-gray-100 dark:border-white/10">
-                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-lg">
+                <div className="bg-slate-50 px-6 py-4 border-b border-gray-100">
+                  <h4 className="font-semibold text-gray-900 text-lg">
                     {section.category}
                   </h4>
                 </div>
                 {section.items.map((item, itemIdx) => (
                   <div
                     key={itemIdx}
-                    className="grid grid-cols-4 p-6 border-b border-gray-100 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-neutral-800/50 transition-colors duration-150"
+                    className="grid grid-cols-4 p-6 border-b border-gray-100 hover:bg-slate-50 transition-colors duration-150"
                   >
-                    <div className="text-gray-700 dark:text-gray-300 font-medium">{item.name}</div>
+                    <div className="text-gray-700 font-medium">{item.name}</div>
                     <div className="flex justify-center">
                       {item.basic ? (
                         <Check className="w-6 h-6 text-green-500" />
@@ -709,7 +709,7 @@ export default function Pricing() {
       </div>
 
       {/* Footer CTA */}
-      <div className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-neutral-950">
+      <div className="relative z-10 py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             variants={titleVariants}
@@ -717,10 +717,10 @@ export default function Pricing() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h3 className="text-3xl font-semibold text-gray-900 dark:text-gray-100 heroTitle mb-1">
+            <h3 className="text-3xl font-semibold text-gray-900 heroTitle mb-1">
               Ready to get started?
             </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 poppins">
+            <p className="text-lg text-gray-600 mb-8 poppins">
               Join thousands of satisfied customers who trust our platform
             </p>
             <motion.button 
