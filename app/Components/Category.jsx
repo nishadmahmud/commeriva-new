@@ -12,13 +12,40 @@ import { Eye, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+const ProjectLogo = ({ src, alt, size = 24 }) => {
+  const [error, setError] = useState(false);
+  const letter = alt ? alt.charAt(0).toUpperCase() : '?';
+  
+  if (error || !src) {
+    return (
+      <div 
+        style={{ width: size, height: size }} 
+        className="rounded-full border border-gray-200 bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold shrink-0"
+      >
+        {letter}
+      </div>
+    );
+  }
+  
+  return (
+    <Image
+      unoptimized
+      src={src}
+      alt={alt}
+      width={size}
+      height={size}
+      className="rounded-full border border-gray-200 object-cover shrink-0"
+      onError={() => setError(true)}
+    />
+  );
+};
 // Base projects data from portfolio
 const allProjects = [
   {
     id: 101,
     title: "Dizmo",
-    logo: "https://www.dizmo.com.bd/_next/image?url=%2Fdizmo_logo_1.png&w=256&q=75",
-    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Dizmo",
+    logo: "https://www.dizmo.com.bd/favicon.ico",
+    image: "/dizmo-ss.png",
     description: "Shop the latest smartphones, laptops, tablets & gadgets with authentic warranty at Dizmo Bangladesh.",
     liveLink: "https://www.dizmo.com.bd/",
     technologies: ["Next.js", "Tailwind"],
@@ -36,7 +63,7 @@ const allProjects = [
     id: 102,
     title: "Sports Shop",
     logo: "https://www.google.com/s2/favicons?domain=sportsshop.com.bd&sz=128",
-    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Sports+Shop",
+    image: "/sports-ss.png",
     description: "Shop premium sports equipment, fitness gear, and athletic wear in Bangladesh.",
     liveLink: "https://www.sportsshop.com.bd/",
     technologies: ["Next.js", "Tailwind"],
@@ -45,7 +72,7 @@ const allProjects = [
     id: 103,
     title: "Allion",
     logo: "https://www.google.com/s2/favicons?domain=allion-appliance.com&sz=128",
-    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Allion",
+    image: "/allion-ss.png",
     description: "Premium kitchen appliances and home essentials.",
     liveLink: "https://www.allion-appliance.com/",
     technologies: ["Next.js", "Tailwind"],
@@ -54,7 +81,7 @@ const allProjects = [
     id: 104,
     title: "HN Dental Supply",
     logo: "https://www.google.com/s2/favicons?domain=hndentalbd.com&sz=128",
-    image: "https://placehold.co/800x600/f8fafc/1e293b?text=HN+Dental+Supply",
+    image: "/hndental-ss.png",
     description: "Your premier destination for authentic dental instruments and tech accessories.",
     liveLink: "https://hndentalbd.com/",
     technologies: ["Next.js", "Tailwind"],
@@ -246,30 +273,30 @@ export default function Category() {
         </motion.div>
 
         {/* Layout: Sidebar + Content */}
-        <div className="flex flex-col lg:flex-row gap-10 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
           {/* Left Sidebar (Category List) */}
-          <div className="w-full lg:w-1/3 flex flex-col gap-2 shrink-0 lg:sticky lg:top-24">
+          <div className="w-full lg:w-1/3 flex overflow-x-auto lg:overflow-visible lg:flex-col gap-2 shrink-0 lg:sticky lg:top-24 pb-2 lg:pb-0 snap-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {categories.map((cat) => {
               const isActive = active === cat.name;
               return (
                 <button
                   key={cat.name}
                   onClick={() => setActive(cat.name)}
-                  className={`flex items-center gap-4 px-5 py-4 rounded-xl text-left transition-all duration-300 w-full ${
+                  className={`flex items-center gap-2 lg:gap-4 px-3 py-2 lg:px-5 lg:py-4 rounded-xl text-left transition-all duration-300 whitespace-nowrap lg:whitespace-normal shrink-0 snap-start w-auto lg:w-full ${
                     isActive
                       ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
                       : "bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200/60"
                   }`}
                 >
                   <div
-                    className={`text-2xl ${
+                    className={`text-lg lg:text-2xl ${
                       isActive ? "text-white" : "text-gray-400"
                     }`}
                   >
                     {cat.icon}
                   </div>
                   <span
-                    className={`font-semibold poppins text-sm md:text-base ${
+                    className={`font-semibold poppins text-xs md:text-base ${
                       isActive ? "text-white" : "text-gray-700"
                     }`}
                   >
@@ -281,7 +308,7 @@ export default function Category() {
           </div>
 
           {/* Right Content (Projects Grid) */}
-          <div className="w-full lg:w-2/3 min-h-[500px]">
+          <div className="w-full lg:w-2/3 lg:min-h-[500px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -292,7 +319,7 @@ export default function Category() {
                 className="flex flex-col gap-6"
               >
                 {/* Category Header */}
-                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                <div className="hidden lg:block bg-gray-50 rounded-2xl p-6 border border-gray-200">
                   <h3 className="text-2xl font-bold text-gray-900 heroTitle flex items-center gap-3">
                     <span className="text-blue-600">{activeCategory?.icon}</span>
                     {activeCategory?.name}
@@ -304,14 +331,14 @@ export default function Category() {
 
                 {/* Projects Grid */}
                 {activeCategory?.projects && activeCategory.projects.length > 0 ? (
-                  <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="flex sm:grid sm:grid-cols-2 overflow-x-auto sm:overflow-visible gap-4 sm:gap-6 pb-4 sm:pb-0 snap-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                     {activeCategory.projects.map((project) => (
                       <motion.div
                         key={project.id}
                         variants={cardVariants}
                         initial="hidden"
                         animate="visible"
-                        className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
+                        className="w-[70vw] max-w-[280px] sm:max-w-none sm:w-auto shrink-0 snap-center group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
                       >
                         {/* Project Image */}
                         <div className="relative h-44 overflow-hidden border-b border-gray-100">
@@ -327,13 +354,10 @@ export default function Category() {
                         {/* Content */}
                         <div className="p-4 flex flex-col flex-grow">
                           <div className="flex items-center gap-2 mb-3">
-                            <Image
-                              unoptimized
+                            <ProjectLogo
                               src={project.logo}
                               alt={project.title}
-                              width={24}
-                              height={24}
-                              className="rounded-full border border-gray-200 object-cover shrink-0"
+                              size={24}
                             />
                             <h3 className="text-sm font-semibold text-gray-900 poppins truncate">
                               {project.title}

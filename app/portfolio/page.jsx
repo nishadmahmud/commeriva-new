@@ -1,17 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Eye, ExternalLink, ArrowRight } from "lucide-react";
+
+const ProjectLogo = ({ src, alt, size = 32 }) => {
+  const [error, setError] = useState(false);
+  const letter = alt ? alt.charAt(0).toUpperCase() : '?';
+  
+  if (error || !src) {
+    return (
+      <div 
+        style={{ width: size, height: size }} 
+        className="rounded-full border border-gray-200 bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold shrink-0"
+      >
+        {letter}
+      </div>
+    );
+  }
+  
+  return (
+    <Image
+      unoptimized
+      src={src}
+      alt={alt}
+      width={size}
+      height={size}
+      className="rounded-full border border-gray-200 object-cover shrink-0"
+      onError={() => setError(true)}
+    />
+  );
+};
 
 const projects = [
   {
     id: 101,
     title: "Dizmo",
     logo: "https://www.dizmo.com.bd/favicon.ico",
-    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Dizmo",
+    image: "/dizmo-ss.png",
     description: "Shop the latest smartphones, laptops, tablets & gadgets with authentic warranty at Dizmo Bangladesh.",
     liveLink: "https://www.dizmo.com.bd/",
     technologies: ["Next.js", "Tailwind"],
@@ -20,7 +48,7 @@ const projects = [
     id: 102,
     title: "Sports Shop",
     logo: "https://www.google.com/s2/favicons?domain=sportsshop.com.bd&sz=128",
-    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Sports+Shop",
+    image: "/sports-ss.png",
     description: "Shop premium sports equipment, fitness gear, and athletic wear in Bangladesh.",
     liveLink: "https://www.sportsshop.com.bd/",
     technologies: ["Next.js", "Tailwind"],
@@ -29,7 +57,7 @@ const projects = [
     id: 103,
     title: "Allion",
     logo: "https://www.google.com/s2/favicons?domain=allion-appliance.com&sz=128",
-    image: "https://placehold.co/800x600/f8fafc/1e293b?text=Allion",
+    image: "/allion-ss.png",
     description: "Premium kitchen appliances and home essentials.",
     liveLink: "https://www.allion-appliance.com/",
     technologies: ["Next.js", "Tailwind"],
@@ -38,7 +66,7 @@ const projects = [
     id: 104,
     title: "HN Dental Supply",
     logo: "https://www.google.com/s2/favicons?domain=hndentalbd.com&sz=128",
-    image: "https://placehold.co/800x600/f8fafc/1e293b?text=HN+Dental+Supply",
+    image: "/hndental-ss.png",
     description: "Your premier destination for authentic dental instruments and tech accessories.",
     liveLink: "https://hndentalbd.com/",
     technologies: ["Next.js", "Tailwind"],
@@ -360,13 +388,10 @@ export default function Portfolio() {
                     {/* Footer — logo + title + view button */}
                     <div className="mt-auto flex items-center justify-between gap-3 pt-3 border-t border-gray-100">
                       <div className="flex items-center gap-2.5">
-                        <Image
-                          unoptimized
+                        <ProjectLogo
                           src={project.logo}
                           alt={project.title}
-                          width={32}
-                          height={32}
-                          className="rounded-full border border-gray-200 object-cover"
+                          size={32}
                         />
                         <h3 className="text-sm font-semibold text-gray-900 poppins truncate max-w-[140px]">
                           {project.title}
