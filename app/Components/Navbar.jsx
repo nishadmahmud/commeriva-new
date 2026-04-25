@@ -236,10 +236,10 @@ const Navbar = () => {
                     <div>
                       <button
                         onClick={toggleMobileSubmenu}
-                        className={`w-full flex items-center justify-between px-4 py-3 text-left poppins text-sm rounded-xl transition-all border cursor-pointer ${
+                        className={`w-full flex items-center justify-between px-4 py-3 text-left poppins text-sm rounded-xl transition-all cursor-pointer ${
                           isServiceActive
-                            ? "bg-blue-50 text-blue-700 font-semibold border-blue-200"
-                            : "border-gray-200 text-gray-700 hover:bg-gray-50"
+                            ? "bg-gray-100 text-gray-900 font-semibold"
+                            : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                         }`}
                       >
                         <span>Services</span>
@@ -297,10 +297,10 @@ const Navbar = () => {
                         key={link.name}
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className={`block px-4 py-3 text-sm rounded-xl transition-all border poppins ${
+                        className={`block px-4 py-3 text-sm rounded-xl transition-all poppins ${
                           isActive(link.href)
-                            ? "bg-blue-50 text-blue-700 font-semibold border-blue-200"
-                            : "border-gray-200 text-gray-700 hover:bg-gray-50"
+                            ? "bg-gray-100 text-gray-900 font-semibold"
+                            : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                         }`}
                       >
                         {link.name}
@@ -311,10 +311,10 @@ const Navbar = () => {
                     <Link
                       href="/pricing"
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-3 text-sm rounded-xl transition-all border poppins ${
+                      className={`block px-4 py-3 text-sm rounded-xl transition-all poppins ${
                         isActive("/pricing")
-                          ? "bg-blue-50 text-blue-700 font-semibold border-blue-200"
-                          : "border-gray-200 text-gray-700 hover:bg-gray-50"
+                          ? "bg-gray-100 text-gray-900 font-semibold"
+                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                       }`}
                     >
                       Pricing

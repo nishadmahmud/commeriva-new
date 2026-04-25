@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
+import Marquee from "react-fast-marquee";
 
 const testimonials = [
   {
@@ -76,8 +77,8 @@ export default function ClientReview() {
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Testimonials Grid (Desktop) */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, i) => (
             <motion.div
               key={i}
@@ -128,6 +129,55 @@ export default function ClientReview() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Testimonials Marquee (Mobile) */}
+        <div className="block md:hidden mt-4">
+          <Marquee gradient={false} speed={40} className="py-4">
+            {testimonials.map((testimonial, i) => (
+              <div key={i} className="w-[85vw] max-w-[320px] mx-3 h-full">
+                <div className="bg-white rounded-xl border border-gray-200 p-5 h-full flex flex-col shadow-sm">
+                  {/* Company name */}
+                  {testimonial.company && (
+                    <p className="text-sm font-bold text-gray-900 mb-2 poppins">
+                      {testimonial.company}
+                    </p>
+                  )}
+
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-2">
+                    {[...Array(5)].map((_, s) => (
+                      <Star
+                        key={s}
+                        size={12}
+                        className="text-yellow-400 fill-yellow-400"
+                      />
+                    ))}
+                  </div>
+
+                  {/* Review */}
+                  <p className="text-xs text-gray-500 leading-relaxed poppins mb-4 flex-grow">
+                    "{testimonial.review}"
+                  </p>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-2 mt-auto pt-3 border-t border-gray-100">
+                    <img
+                      src={testimonial.avatar}
+                      className="w-8 h-8 rounded-full object-cover shrink-0"
+                      alt={testimonial.author}
+                    />
+                    <div>
+                      <p className="font-semibold text-xs text-gray-900">
+                        {testimonial.author}
+                      </p>
+                      <p className="text-[10px] text-gray-400">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Marquee>
         </div>
       </div>
     </section>

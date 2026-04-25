@@ -59,7 +59,7 @@ export default function BlogSection() {
         </motion.div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 mb-10">
           {blogs.map((blog, i) => (
             <motion.div
               key={blog.id}
@@ -69,7 +69,7 @@ export default function BlogSection() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group"
             >
-              <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all duration-300 h-full flex flex-col">
+              <div className="bg-white rounded-xl md:rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all duration-300 h-full flex flex-col">
                 {/* Image */}
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
@@ -83,9 +83,9 @@ export default function BlogSection() {
                 </div>
 
                 {/* Content */}
-                <div className="p-5 flex flex-col flex-grow">
+                <div className="p-3 md:p-5 flex flex-col flex-grow">
                   <Link href={`/blogs/${blog.id}`}>
-                    <h3 className="text-base font-bold text-gray-900 hover:text-blue-700 transition-colors poppins line-clamp-2 mb-3">
+                    <h3 className="text-sm md:text-base font-bold text-gray-900 hover:text-blue-700 transition-colors poppins line-clamp-2 mb-2 md:mb-3">
                       {blog.title}
                     </h3>
                   </Link>

@@ -32,12 +32,12 @@ export function WhatWeBring({ title, subtitle, tabs }) {
 
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           {/* Left Tabs */}
-          <div className="lg:col-span-3 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+          <div className="lg:col-span-3 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {tabs.map((tab, i) => (
               <button
                 key={i}
                 onClick={() => setActiveTab(i)}
-                className={`text-left px-4 py-3 rounded-xl text-sm font-semibold poppins transition-all duration-200 cursor-pointer min-w-[140px] lg:min-w-0 ${
+                className={`text-left px-3 py-2 md:px-4 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold poppins transition-all duration-200 cursor-pointer min-w-max lg:min-w-0 ${
                   activeTab === i
                     ? "bg-blue-600 text-white shadow-md"
                     : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-100"

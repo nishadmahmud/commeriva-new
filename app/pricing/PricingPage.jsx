@@ -513,7 +513,7 @@ export default function Pricing() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className={`grid grid-cols-1 md:grid-cols-2 ${selectedCategory !== 'E-Commerce' ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} gap-8 justify-center justify-items-center`}
+            className={`grid grid-cols-1 md:grid-cols-2 ${selectedCategory !== 'E-Commerce' ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} gap-6 md:gap-8`}
           >
             {pricingPlans[selectedCategory].map((plan, index) => {
               const IconComponent = plan.icon;
@@ -523,8 +523,8 @@ export default function Pricing() {
                  variants={cardVariants}
                  custom={index}
                  whileHover="hover"
-                 className={`relative flex flex-col rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl bg-gradient-to-br poppins border-2 ${
-                   plan.popular ? "ring-2 ring-teal-100 shadow-md" : "shadow-lg"
+                 className={`relative flex flex-col h-full w-full rounded-2xl p-6 md:p-8 transition-all duration-300 hover:shadow-2xl bg-gradient-to-br poppins border-2 ${
+                   plan.popular ? "ring-2 ring-blue-100 shadow-xl md:scale-105 z-10" : "shadow-md scale-100 z-0"
                  } ${
                    plan.popular 
                      ? "from-blue-50 to-indigo-50 border-blue-200" 
@@ -533,7 +533,7 @@ export default function Pricing() {
                >
                  {plan.popular && (
                    <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                     <span className="bg-primary-color text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg">
+                     <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs md:text-sm font-semibold px-4 py-1.5 md:py-2 rounded-full shadow-lg whitespace-nowrap">
                        Most Popular
                      </span>
                    </div>
@@ -610,7 +610,7 @@ export default function Pricing() {
                        whileTap={{ scale: 0.95 }}
                        className={`w-full py-3 rounded-full font-semibold text-base transition-all duration-200 ${
                          plan.popular
-                           ? "bg-primary-color text-white shadow-lg hover:shadow-xl"
+                           ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg hover:shadow-xl"
                            : "bg-white text-gray-900 border-2 border-gray-200 hover:border-gray-300 hover:shadow-md"
                        }`}
                      >

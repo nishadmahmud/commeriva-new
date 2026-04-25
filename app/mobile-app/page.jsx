@@ -136,7 +136,7 @@ export default function MobileAppPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
             {features.map((f, i) => (
               <motion.div
                 key={i}
@@ -144,15 +144,15 @@ export default function MobileAppPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5"
+                className="bg-white border border-gray-200 rounded-xl md:rounded-2xl p-4 md:p-6 hover:shadow-md hover:border-gray-300 transition-all hover:-translate-y-0.5 flex flex-col"
               >
-                <div className="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-4">
-                  <f.icon size={20} />
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center mb-3 md:mb-4 shrink-0">
+                  <f.icon className="w-4 h-4 md:w-5 md:h-5" />
                 </div>
-                <h3 className="text-sm font-bold text-gray-900 mb-1.5 poppins">
+                <h3 className="text-xs md:text-sm font-bold text-gray-900 mb-1.5 poppins">
                   {f.title}
                 </h3>
-                <p className="text-xs text-gray-500 leading-relaxed poppins">
+                <p className="text-[10px] md:text-xs text-gray-500 leading-relaxed poppins flex-grow">
                   {f.desc}
                 </p>
               </motion.div>
