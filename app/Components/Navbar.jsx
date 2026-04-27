@@ -43,6 +43,12 @@ const Navbar = () => {
       description: "Flutter & Native apps for iOS and Android",
       icon: "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757408131.png",
     },
+    {
+      name: "Custom Software Development",
+      href: "/custom-software",
+      description: "Scalable ERPs, CRM & custom automation tools",
+      icon: "https://www.outletexpense.xyz/uploads/230-Motiur-Rahman/1757408131.png",
+    },
   ];
 
   const navLinks = [
@@ -66,14 +72,22 @@ const Navbar = () => {
     setMobileActiveMenu(mobileActiveMenu === "services" ? null : "services");
   };
 
+  const isDarkHero = pathname === "/";
+
   return (
-    <div className="pb-[72px]">
-      <nav className="bg-white fixed top-0 w-full z-50 border-b border-gray-200 shadow-sm">
+    <div className={isDarkHero ? "" : "pb-[72px]"}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isDarkHero 
+        ? "bg-[#050616]/80 backdrop-blur-md border-b border-gray-800" 
+        : "bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm"
+      }`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl lg:text-3xl font-extrabold text-gray-900 tracking-tight poppins cursor-pointer hover:opacity-80 transition-opacity"
+            className={`text-2xl lg:text-3xl font-extrabold tracking-tight poppins cursor-pointer hover:opacity-80 transition-opacity ${
+              isDarkHero ? "text-white" : "text-gray-900"
+            }`}
           >
             Commeriva
           </Link>
@@ -89,8 +103,8 @@ const Navbar = () => {
               <button
                 className={`flex items-center gap-1 text-sm font-medium transition-colors cursor-pointer poppins ${
                   isServiceActive
-                    ? "text-blue-700 font-semibold"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "text-blue-500 font-semibold"
+                    : isDarkHero ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 Services
@@ -151,8 +165,8 @@ const Navbar = () => {
                 href={link.href}
                 className={`text-sm font-medium transition-colors poppins ${
                   isActive(link.href)
-                    ? "text-blue-700 font-semibold"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "text-blue-500 font-semibold"
+                    : isDarkHero ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 {link.name}
@@ -185,7 +199,9 @@ const Navbar = () => {
             {!mobileMenuOpen && (
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="text-gray-700 cursor-pointer"
+                className={`cursor-pointer transition-colors ${
+                  isDarkHero ? "text-white" : "text-gray-700"
+                }`}
               >
                 <Menu size={24} />
               </button>

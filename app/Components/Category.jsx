@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GiClothes, GiBabyBottle } from "react-icons/gi";
-import { FaHouseUser, FaRegBuilding, FaScrewdriverWrench } from "react-icons/fa6";
+import { FaHouseUser, FaRegBuilding, FaScrewdriverWrench, FaBook } from "react-icons/fa6";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { MdHealthAndSafety } from "react-icons/md";
 import { HiWrenchScrewdriver } from "react-icons/hi2";
@@ -184,6 +184,69 @@ const allProjects = [
     description: "A premier destination for Apple products in Bangladesh.",
     liveLink: "https://applenationbd.com/",
     technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 105,
+    title: "Applex",
+    logo: "https://www.applex.com.bd/favicon.ico",
+    image: "/applex.png",
+    description: "Premium electronics and gadgets store in Bangladesh offering the latest technology and devices.",
+    liveLink: "https://www.applex.com.bd",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 106,
+    title: "Verona Plus",
+    logo: "https://verona-plus.com/favicon.ico",
+    image: "",
+    description: "Your ultimate destination for quality home appliances, essentials, and premium lifestyle products.",
+    liveLink: "https://verona-plus.com",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 107,
+    title: "Allion Plus",
+    logo: "https://allion-plus.com/favicon.ico",
+    image: "/allion-ss.png",
+    description: "A comprehensive home stuff and appliances store with a wide range of household accessories.",
+    liveLink: "https://allion-plus.com",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 108,
+    title: "Tarunya Prokashon",
+    logo: "https://www.tarunyaprokashon.com/favicon.ico",
+    image: "/tarunya.png",
+    description: "A leading book publisher and online bookstore in Bangladesh offering a vast collection of books.",
+    liveLink: "https://www.tarunyaprokashon.com/",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 109,
+    title: "Cellfix BD",
+    logo: "https://www.cellfixbd.com/favicon.ico",
+    image: "/cellfix.png",
+    description: "Trusted electronics and mobile solutions offering the latest smartphones and repair services.",
+    liveLink: "https://www.cellfixbd.com/",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 110,
+    title: "Celltech BD",
+    logo: "https://www.celltechbd.com.bd/favicon.ico",
+    image: "/celltech.png",
+    description: "Your reliable source for the latest electronics, mobile devices, and premium accessories.",
+    liveLink: "https://www.celltechbd.com.bd/",
+    technologies: ["Next.js", "Tailwind"],
+  },
+  {
+    id: 111,
+    title: "Pochondo Shop",
+    logo: "https://pochondoshop.com/favicon.ico",
+    image: "/pochondoshop.png",
+    description: "An exclusive online electronics shop featuring the latest gadgets and smart devices.",
+    liveLink: "https://pochondoshop.com/",
+    technologies: ["Next.js", "Tailwind"],
   }
 ];
 
@@ -193,7 +256,7 @@ const categories = [
     icon: <HiWrenchScrewdriver />,
     description: "From smartphones to smart homes — we build high-performance stores for electronics brands.",
     projects: allProjects.filter((p) =>
-      ["Dizmo", "Gadget Bodda", "Mobile Club", "Apple Daddy", "Elite", "Perfect Gadget BD", "Apple Nation BD"].includes(p.title)
+      ["Dizmo", "Gadget Bodda", "Mobile Club", "Apple Daddy", "Elite", "Perfect Gadget BD", "Apple Nation BD", "Applex", "Cellfix BD", "Celltech BD", "Pochondo Shop"].includes(p.title)
     ),
   },
   {
@@ -214,7 +277,7 @@ const categories = [
     name: "Home & Living",
     icon: <FaHouseUser />,
     description: "Furniture, décor, and home essentials. We create warm, inviting storefronts.",
-    projects: allProjects.filter((p) => ["Allion"].includes(p.title)),
+    projects: allProjects.filter((p) => ["Allion", "Verona Plus", "Allion Plus"].includes(p.title)),
   },
   {
     name: "Health & Wellness",
@@ -233,6 +296,12 @@ const categories = [
     icon: <RiShoppingBag3Fill />,
     description: "Quick-commerce and grocery stores built for speed — fast search and easy ordering.",
     projects: allProjects.filter((p) => ["Taiba Mart"].includes(p.title)),
+  },
+  {
+    name: "Books & Publications",
+    icon: <FaBook />,
+    description: "Online bookstores, publishers, and literary platforms with elegant browsing experiences.",
+    projects: allProjects.filter((p) => ["Tarunya Prokashon"].includes(p.title)),
   },
 ];
 

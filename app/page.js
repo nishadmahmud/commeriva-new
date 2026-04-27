@@ -1,5 +1,5 @@
 import HeroPage from "./Components/HeroPage";
-import Category from "./Components/Category";
+// import Category from "./Components/Category";
 import OurStacks from "./Components/OurStacks";
 import SupplyChain from "./Components/SupplyChain";
 import ClientReview from "./Components/ClientReview";
@@ -18,7 +18,7 @@ export default function Home() {
       <HeroPage />
       <OurServices />
       <CMSFeatures />
-      <Category />
+      {/* <Category /> */}
       <OurStacks />
       <SupplyChain />
       <ClientReview />

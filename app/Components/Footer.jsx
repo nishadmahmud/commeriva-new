@@ -60,6 +60,7 @@ const Footer = () => {
                 { name: "Landing Page / Funnel", href: "/landing-page" },
                 { name: "Portfolio Website", href: "/portfolio-website" },
                 { name: "Custom Mobile App", href: "/mobile-app" },
+                { name: "Custom Software Development", href: "/custom-software" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link

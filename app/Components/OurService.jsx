@@ -9,6 +9,7 @@ import {
   Rocket,
   UserCircle,
   Smartphone,
+  Code2,
 } from "lucide-react";
 
 const services = [
@@ -56,6 +57,15 @@ const services = [
     color: "bg-rose-50 text-rose-600 border-rose-100",
     buttonText: "Learn More",
     buttonLink: "/mobile-app",
+  },
+  {
+    title: "Custom Software Development",
+    description:
+      "Scalable web applications, ERPs, and internal tools tailored to your unique business workflows and operational needs.",
+    icon: Code2,
+    color: "bg-cyan-50 text-cyan-600 border-cyan-100",
+    buttonText: "Learn More",
+    buttonLink: "/custom-software",
   },
 ];
 
