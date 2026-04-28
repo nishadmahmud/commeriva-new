@@ -153,16 +153,18 @@ export default function Portfolio() {
             Real projects we've built for real businesses. From e-commerce to
             corporate — every project is crafted for performance.
           </p>
-          <div className="flex items-center justify-center gap-3 mt-6 flex-wrap">
+          <div className="mt-6 -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="flex md:items-center md:justify-center gap-2 md:gap-3 overflow-x-auto md:overflow-visible whitespace-nowrap md:whitespace-normal md:flex-wrap pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {grouped.map(([cat, items]) => (
               <a
                 key={cat}
                 href={`#${cat.replace(/\s+&\s+/g, "-").replace(/\s+/g, "-").toLowerCase()}`}
-                className="text-xs px-3 py-1.5 rounded-full bg-white border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-all poppins"
+                className="inline-flex shrink-0 text-xs px-3 py-1.5 rounded-full bg-white border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-all poppins"
               >
                 {cat} <span className="text-gray-400 ml-1">({items.length})</span>
               </a>
             ))}
+            </div>
           </div>
         </motion.div>
 
