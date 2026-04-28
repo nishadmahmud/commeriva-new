@@ -5,10 +5,65 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Calendar, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
+const defaultTabs = [
+  {
+    label: "Strategy",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
+    description:
+      "We align product goals with your business priorities before writing code.",
+    points: [
+      "Requirement discovery and scope alignment",
+      "Feature roadmap and milestone planning",
+      "Risk analysis and implementation strategy",
+    ],
+  },
+  {
+    label: "Execution",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80",
+    description:
+      "Our team ships in iterations, so you get visibility and momentum from day one.",
+    points: [
+      "Sprint-based development with weekly updates",
+      "Code quality checks and performance review",
+      "Continuous feedback and adaptation",
+    ],
+  },
+  {
+    label: "Growth",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
+    description:
+      "After launch, we monitor, optimize, and scale your software with your growth.",
+    points: [
+      "Post-launch monitoring and issue response",
+      "Data-driven improvements and new features",
+      "Scaling support for traffic and team growth",
+    ],
+  },
+];
+
+const defaultFaqs = [
+  {
+    q: "How long does a custom software project take?",
+    a: "Most projects are delivered in phased milestones based on scope, with a first usable version often available in a few weeks.",
+  },
+  {
+    q: "Can you work with our existing systems?",
+    a: "Yes, we can integrate with your current tools and APIs to avoid disrupting your existing operations.",
+  },
+  {
+    q: "Do you provide support after launch?",
+    a: "Absolutely. We offer maintenance, monitoring, and iterative improvements after deployment.",
+  },
+];
+
 /* ─── Tabbed "What We Bring" Section ─── */
-export function WhatWeBring({ title, subtitle, tabs }) {
+export function WhatWeBring({ title, subtitle, tabs = defaultTabs }) {
+  const safeTabs = tabs.length > 0 ? tabs : defaultTabs;
   const [activeTab, setActiveTab] = useState(0);
-  const active = tabs[activeTab];
+  const active = safeTabs[activeTab] || safeTabs[0];
 
   return (
     <section className="py-16 px-6 bg-gray-50 border-t border-b border-gray-200">
@@ -33,7 +88,7 @@ export function WhatWeBring({ title, subtitle, tabs }) {
         <div className="grid lg:grid-cols-12 gap-8 items-start">
           {/* Left Tabs */}
           <div className="lg:col-span-3 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            {tabs.map((tab, i) => (
+            {safeTabs.map((tab, i) => (
               <button
                 key={i}
                 onClick={() => setActiveTab(i)}
@@ -107,6 +162,7 @@ export function WhatWeBring({ title, subtitle, tabs }) {
 
 /* ─── FAQ Accordion ─── */
 export function FAQSection({ faqs, serviceLabel }) {
+  const safeFaqs = faqs?.length ? faqs : defaultFaqs;
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
@@ -133,7 +189,7 @@ export function FAQSection({ faqs, serviceLabel }) {
         </motion.div>
 
         <div className="space-y-3">
-          {faqs.map((faq, i) => (
+          {safeFaqs.map((faq, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 10 }}

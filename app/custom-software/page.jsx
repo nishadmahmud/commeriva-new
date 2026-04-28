@@ -19,7 +19,7 @@ import {
 
 const features = [
   {
-    icon: Layouts,
+    icon: Layers,
     title: "Custom Dashboards",
     desc: "Tailored admin panels and internal tools designed specifically for your unique business workflows.",
   },
@@ -87,9 +87,6 @@ const processSteps = [
     desc: "Rigorous quality assurance followed by a secure cloud deployment and ongoing maintenance support.",
   },
 ];
-
-// Helper for the missing icon in my list
-const Layouts = Layers;
 
 export default function CustomSoftwarePage() {
   return (
