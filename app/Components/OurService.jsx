@@ -27,7 +27,7 @@ const services = [
     description:
       "Professional websites that strengthen your brand identity, build trust with clients, and establish your digital presence with authority.",
     icon: Building2,
-    color: "bg-orange-50 text-orange-600 border-orange-100",
+    color: "bg-blue-50 text-blue-600 border-blue-100",
     buttonText: "Learn More",
     buttonLink: "/corporate-website",
   },
@@ -98,7 +98,7 @@ export default function OurServices() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-xs font-semibold poppins mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold poppins mb-4">
             Our Services
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 heroTitle">

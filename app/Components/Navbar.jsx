@@ -180,7 +180,7 @@ const Navbar = () => {
               href="https://docs.google.com/forms/d/e/1FAIpQLSebEE9Lz4XluDQ9oLs6dS6CH1NNEBQcEmVQ4ncpg9i3uyuy1w/viewform"
               target="_blank"
             >
-              <button className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-5 py-2.5 rounded-full text-sm poppins cursor-pointer transition-colors shadow-sm hover:shadow-md flex items-center gap-2">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-full text-sm poppins cursor-pointer transition-colors shadow-sm hover:shadow-md flex items-center gap-2">
                 Get a Free Consultation
                 <ArrowRight size={16} />
               </button>
@@ -192,7 +192,7 @@ const Navbar = () => {
             <Link
               href="https://wa.me/+8801886182084"
               target="_blank"
-              className="px-4 py-2 rounded-full bg-orange-600 text-white text-sm font-semibold poppins shadow-sm"
+              className="px-4 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold poppins shadow-sm"
             >
               Let's Talk
             </Link>

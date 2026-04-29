@@ -8,6 +8,8 @@ import FAQSection from "./Components/FAQSection";
 import OurServices from "./Components/OurService";
 import CTASection from "./Components/CTASection";
 import CMSFeatures from "./Components/CMSFeatures";
+import PlatformHighlights from "./Components/PlatformHighlights";
+import TrustedBrandsGrid from "./Components/TrustedBrandsGrid";
 
 export const userId = 217;
 export const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -17,11 +19,13 @@ export default function Home() {
     <div>
       <HeroPage />
       <OurServices />
+      <PlatformHighlights />
       <CMSFeatures />
       {/* <Category /> */}
       <OurStacks />
       <SupplyChain />
       <ClientReview />
+      <TrustedBrandsGrid />
       <Blog />
       <FAQSection />
       <CTASection />

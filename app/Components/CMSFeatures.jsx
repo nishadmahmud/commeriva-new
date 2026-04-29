@@ -91,7 +91,7 @@ export default function CMSFeatures() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14"
         >
           <div>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-xs font-semibold poppins mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold poppins mb-4">
               ✦ Key Features
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 heroTitle leading-tight">

@@ -49,7 +49,7 @@ const HeroPage = () => {
             >
               Build & Scale Your eCommerce
               <br />
-              <span className="bg-gradient-to-r from-orange-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">
                 with Commeriva
               </span>
             </motion.h1>
@@ -73,7 +73,7 @@ const HeroPage = () => {
               className="flex flex-row justify-center items-center gap-3 md:gap-4 mb-20 px-2"
             >
               <Link href="/contact-us" className="w-1/2 md:w-auto">
-                <button className="w-full bg-[#ff5c00] hover:bg-[#e65300] text-white font-bold px-4 md:px-8 py-3 md:py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(255,92,0,0.3)] flex items-center justify-center gap-2 text-xs md:text-base poppins whitespace-nowrap">
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 md:px-8 py-3 md:py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] flex items-center justify-center gap-2 text-xs md:text-base poppins whitespace-nowrap">
                   Get Started
                   <ArrowRight size={16} className="hidden md:block" />
                 </button>
@@ -111,13 +111,13 @@ const HeroPage = () => {
                   className="relative scale-75 md:scale-100 origin-bottom-left"
                 >
                   <div className="bg-[#131426]/95 backdrop-blur-xl border border-white/10 p-5 md:p-7 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden min-w-[150px] md:min-w-[180px]">
-                    <div className="absolute -top-8 -right-8 w-16 h-16 bg-orange-500/20 blur-2xl rounded-full" />
-                    <div className="text-orange-500 font-bold text-xl md:text-2xl mb-1 md:mb-2 heroTitle">100+</div>
+                    <div className="absolute -top-8 -right-8 w-16 h-16 bg-blue-500/20 blur-2xl rounded-full" />
+                    <div className="text-blue-400 font-bold text-xl md:text-2xl mb-1 md:mb-2 heroTitle">100+</div>
                     <div className="text-white text-[10px] md:text-sm poppins font-medium leading-tight">
                       Enterprise-ready<br/>features
                     </div>
                   </div>
-                  <div className="absolute top-[90%] left-1/2 -translate-x-1/2 text-orange-500 pointer-events-none">
+                  <div className="absolute top-[90%] left-1/2 -translate-x-1/2 text-blue-400 pointer-events-none">
                     <svg width="30" height="50" viewBox="0 0 40 60" fill="none" className="md:w-[40px] md:h-[60px]">
                       <path d="M20 5C20 20 35 30 35 55" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="3 3" className="opacity-40" />
                       <path d="M30 50L35 55L40 50" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
@@ -172,12 +172,12 @@ const HeroPage = () => {
                   unoptimized
                 />
                 
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/0 transition-colors">
+                {/* Play Button Layer (no dark overlay) */}
+                <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    className="w-10 h-10 md:w-20 md:h-20 bg-orange-500 text-white rounded-lg md:rounded-2xl flex items-center justify-center shadow-2xl cursor-pointer border-2 md:border-4 border-white/20 backdrop-blur-sm"
+                    className="w-10 h-10 md:w-20 md:h-20 bg-blue-600 text-white rounded-lg md:rounded-2xl flex items-center justify-center shadow-2xl cursor-pointer border-2 md:border-4 border-white/20 backdrop-blur-sm"
                   >
                     <Play size={16} fill="currentColor" className="md:hidden" />
                     <Play size={32} fill="currentColor" className="hidden md:block" />

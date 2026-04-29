@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import Marquee from "react-fast-marquee";
 
 const testimonials = [
@@ -54,7 +54,7 @@ const testimonials = [
 
 export default function ClientReview() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -64,8 +64,8 @@ export default function ClientReview() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-orange-600 text-xs font-semibold poppins mb-4">
-            <Star size={12} className="fill-orange-500" />
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold poppins mb-4">
+            <Star size={12} className="fill-blue-500 text-blue-500" />
             Testimonials
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 heroTitle">
@@ -77,75 +77,43 @@ export default function ClientReview() {
           </p>
         </motion.div>
 
-        {/* Testimonials Grid (Desktop) */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group"
-            >
-              <div className="bg-white rounded-2xl border border-gray-200 p-6 h-full flex flex-col hover:shadow-lg hover:border-gray-300 transition-all duration-300">
-                {/* Company name */}
-                {testimonial.company && (
-                  <p className="text-sm font-bold text-gray-900 mb-3 poppins">
-                    {testimonial.company}
-                  </p>
-                )}
-
-                {/* Stars */}
-                <div className="flex gap-1 mb-3">
-                  {[...Array(5)].map((_, s) => (
-                    <Star
-                      key={s}
-                      size={14}
-                      className="text-yellow-400 fill-yellow-400"
-                    />
-                  ))}
-                </div>
-
-                {/* Review */}
-                <p className="text-sm text-gray-500 leading-relaxed poppins mb-5 flex-grow">
-                  "{testimonial.review}"
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-3 mt-auto pt-4 border-t border-gray-100">
-                  <img
-                    src={testimonial.avatar}
-                    className="w-10 h-10 rounded-full object-cover"
-                    alt={testimonial.author}
+        {/* Testimonials Marquee (All Devices) */}
+        <div className="mt-4 overflow-hidden">
+          <Marquee
+            gradient={true}
+            gradientColor="#ffffff"
+            gradientWidth={120}
+            speed={28}
+            direction="right"
+            pauseOnHover={false}
+            className="py-4 no-scrollbar"
+          >
+            {[...testimonials, ...testimonials].map((testimonial, i) => (
+              <div
+                // Duplicate list for seamless loop
+                key={`${testimonial.author}-${i}`}
+                className="w-[86vw] max-w-[360px] md:max-w-[380px] mx-3 h-full"
+              >
+                <div className="relative bg-white/90 rounded-2xl border border-gray-200 p-5 min-h-[220px] flex flex-col shadow-sm hover:shadow-md transition-all duration-300">
+                  <Quote
+                    size={18}
+                    className="absolute top-4 right-4 text-blue-500/30"
                   />
-                  <div>
-                    <p className="font-semibold text-sm text-gray-900">
-                      {testimonial.author}
-                    </p>
-                    <p className="text-xs text-gray-400">{testimonial.role}</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
-        {/* Testimonials Marquee (Mobile) */}
-        <div className="block md:hidden mt-4">
-          <Marquee gradient={false} speed={40} className="py-4">
-            {testimonials.map((testimonial, i) => (
-              <div key={i} className="w-[85vw] max-w-[320px] mx-3 h-full">
-                <div className="bg-white rounded-xl border border-gray-200 p-5 h-full flex flex-col shadow-sm">
-                  {/* Company name */}
-                  {testimonial.company && (
-                    <p className="text-sm font-bold text-gray-900 mb-2 poppins">
-                      {testimonial.company}
-                    </p>
-                  )}
+                  {/* Company name (keep height even when missing) */}
+                  <p
+                    className="text-sm font-bold text-gray-900 mb-3 poppins leading-tight"
+                    aria-hidden={!testimonial.company}
+                  >
+                    {testimonial.company ? (
+                      testimonial.company
+                    ) : (
+                      <span className="opacity-0">Company</span>
+                    )}
+                  </p>
 
                   {/* Stars */}
-                  <div className="flex gap-1 mb-2">
+                  <div className="flex gap-1 mb-3">
                     {[...Array(5)].map((_, s) => (
                       <Star
                         key={s}
@@ -156,22 +124,24 @@ export default function ClientReview() {
                   </div>
 
                   {/* Review */}
-                  <p className="text-xs text-gray-500 leading-relaxed poppins mb-4 flex-grow">
+                  <p className="text-xs text-gray-600 leading-relaxed poppins mb-4 flex-grow line-clamp-4">
                     "{testimonial.review}"
                   </p>
 
                   {/* Author */}
-                  <div className="flex items-center gap-2 mt-auto pt-3 border-t border-gray-100">
+                  <div className="flex items-center gap-3 mt-auto pt-3 border-t border-gray-100">
                     <img
                       src={testimonial.avatar}
-                      className="w-8 h-8 rounded-full object-cover shrink-0"
+                      className="w-9 h-9 rounded-full object-cover shrink-0 ring-2 ring-blue-50"
                       alt={testimonial.author}
                     />
                     <div>
                       <p className="font-semibold text-xs text-gray-900">
                         {testimonial.author}
                       </p>
-                      <p className="text-[10px] text-gray-400">{testimonial.role}</p>
+                      <p className="text-[10px] text-gray-400">
+                        {testimonial.role}
+                      </p>
                     </div>
                   </div>
                 </div>
