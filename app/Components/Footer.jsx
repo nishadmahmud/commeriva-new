@@ -258,6 +258,24 @@ const Footer = () => {
                   </Link>
                 ))}
               </div>
+              <div className="mt-4">
+                <p className="text-sm font-bold tracking-wide text-gray-900 mb-2">Powered by</p>
+                <Link
+                  href="https://www.squadinnovators.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Powered by Squad Innovators"
+                  className="inline-block w-full"
+                >
+                  <Image
+                    src="/powered-by-squad-innovators.png"
+                    alt="Squad Innovators"
+                    width={160}
+                    height={40}
+                    className="w-full max-w-[160px] h-auto object-contain"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
